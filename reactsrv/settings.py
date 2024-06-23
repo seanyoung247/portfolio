@@ -1,6 +1,6 @@
 
 """
-Defines shared settings
+Defines app setting variables
 """
 
 ROOT_FOLDER = None

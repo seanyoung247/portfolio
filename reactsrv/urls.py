@@ -5,7 +5,8 @@ from . import views
 
 
 def add_urls(bp):
-    
-    # bp.add_url_rule(rule='/', view_func=views.Index.as_view('index'))
-    bp.add_url_rule(rule='/logo.svg', view_func=views.favicon)
+    """
+    Registers routes handled by this app
+    """
+    bp.add_url_rule(rule="/<path:path>", view_func=views.public)
     bp.add_url_rule(rule='/', view_func=views.index)

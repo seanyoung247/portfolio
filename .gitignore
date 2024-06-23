@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Build
+frontend/
+
 # Python / Flask
 .idea/
 .vscode/

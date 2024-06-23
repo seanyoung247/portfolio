@@ -2,21 +2,18 @@
 Defines this apps view routes
 """
 
+import os
 from flask import render_template, send_from_directory
-# from flask.views import View
 from . import settings
 
-
-# class Index(View):
-#     methods = ['GET',]
-    
-#     def dispatch_request(self):
-#         return render_template('index.html')
-
-
 def index():
+    """ Renders the react HTML template """
     return render_template('index.html')
 
 
-def favicon():
-    return send_from_directory(settings.ROOT_FOLDER, 'logo.svg')
+def public(path):
+    """ Serves public files """
+    path = path.split("/")
+    file_name = path[-1]
+    dir_name = os.path.join(settings.ROOT_FOLDER, "/".join(path[:-1]))
+    return send_from_directory(dir_name, file_name)
