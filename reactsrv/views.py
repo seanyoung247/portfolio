@@ -4,6 +4,7 @@ Defines this apps view routes
 
 from flask import render_template, send_from_directory
 # from flask.views import View
+from . import settings
 
 
 # class Index(View):
@@ -18,4 +19,4 @@ def index():
 
 
 def favicon():
-    return send_from_directory('./frontend', 'logo.svg')
+    return send_from_directory(settings.ROOT_FOLDER, 'logo.svg')
