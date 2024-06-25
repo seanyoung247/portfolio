@@ -1,17 +1,26 @@
-import { useEffect, useState } from 'react'
+
+import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-  const [msg, setMessage] = useState('Waiting...')
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 
-  useEffect(() => {
-    fetch('/api/test')
-      .then(response => response.text())
-      .then(response => setMessage(response))
-  }, [])
+const queryClient = new QueryClient()
+
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <Test/>
+  </QueryClientProvider>
+)
+
+function Test() {
+  const [ count, setCount ] = useState(0)
+  const { isPending, data } = useQuery({
+    queryKey: ['test',],
+    queryFn: ()=>fetch('/api/test').then(response=>response.text())
+  })
 
   return (
     <>
@@ -29,8 +38,8 @@ function App() {
           count is {count}
         </button>
 
-        <div>API Response: {msg}</div>
-
+        <div>API Response: { isPending ? 'Waiting...' : data}</div>
+ 
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
