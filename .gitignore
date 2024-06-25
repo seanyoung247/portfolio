@@ -26,6 +26,7 @@ dist/
 htmlcov/
 .tox/
 docs/_build/
+.env
 
 # Editor directories and files
 .vscode/*

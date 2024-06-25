@@ -1,10 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [msg, setMessage] = useState('Waiting...')
+
+  useEffect(() => {
+    fetch('/api/test')
+      .then(response => response.text())
+      .then(response => setMessage(response))
+  }, [])
 
   return (
     <>
@@ -21,6 +28,9 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+
+        <div>API Response: {msg}</div>
+
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

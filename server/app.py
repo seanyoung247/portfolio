@@ -1,11 +1,17 @@
 from flask import Flask
-import reactsrv
+from dotenv import load_dotenv
+
+import vite_react
+import api
+
+
+load_dotenv()
 
 
 app = Flask(__name__,  static_folder=None)
 
-
-reactsrv.init(app, '../frontend')
+api.init(app)
+vite_react.init(app, '../frontend')
 
 
 if __name__ == "__main__":

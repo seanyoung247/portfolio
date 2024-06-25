@@ -16,4 +16,4 @@ def public(path):
     path = path.split("/")
     file_name = path[-1]
     dir_name = os.path.join(settings.ROOT_FOLDER, "/".join(path[:-1]))
-    return send_from_directory(dir_name, file_name)
+    return send_from_directory(settings.ROOT_FOLDER, file_name)
