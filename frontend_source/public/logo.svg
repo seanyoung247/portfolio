@@ -28,9 +28,12 @@
       }
     }
 
-    .logo {
-      fill: var(--foreground, #fff);
-      stroke: none;
+    .logo-y {
+      fill: #ffd43b;
+    }
+
+    .logo-s {
+      fill: #306998;
     }
 
     .logo-path {
@@ -47,8 +50,8 @@
   </style>
   <g id="bounds">
     <g id="outlines">
-      <use xlink:href="#path-y" id="outline-y" class="logo logo-path" />
-      <use xlink:href="#path-s" id="outline-s" class="logo logo-path" />
+      <use xlink:href="#path-y" id="outline-y" class="logo-y logo-path" />
+      <use xlink:href="#path-s" id="outline-s" class="logo-s logo-path" />
     </g>
     <use xlink:href="#path-border" id="border" class="logo-border logo-path" />
   </g>
