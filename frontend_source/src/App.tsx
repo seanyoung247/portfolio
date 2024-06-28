@@ -1,54 +1,44 @@
 
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
-
-import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
-
-const queryClient = new QueryClient()
+import { Global, css, ThemeProvider } from '@emotion/react'
+import themes, { ThemeName, Theme } from './theme'
 
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <Test/>
-  </QueryClientProvider>
-)
+const pageStyles = (theme: Theme) => css`
+    body {
+        background-color: ${theme.background};
+        color: ${theme.foreground};
+    }
+`
 
-function Test() {
-  const [ count, setCount ] = useState(0)
-  const { isPending, data } = useQuery({
-    queryKey: ['test',],
-    queryFn: ()=>fetch('/api/test').then(response=>response.text())
-  })
+const testStyle = (theme: Theme) => ({
+    width: 'auto',
+    backgroundColor: theme.contentBackground,
+    color: theme.foreground,
+    padding: '1em',
+    margin: '2em',
+    borderRadius: '10px',
+    borderBottom: `1px solid ${theme.primaryAccent}`
+})
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+const App = () => {
+    const [currentTheme, setCurrentTheme] = useState<ThemeName>(ThemeName.light)
 
-        <div>API Response: { isPending ? 'Waiting...' : data}</div>
- 
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const toggleTheme = (theme: ThemeName) => setCurrentTheme(theme === ThemeName.light ? ThemeName.dark : ThemeName.light)
+
+    return (
+        <ThemeProvider theme={themes[currentTheme]}>
+            <Global styles={(theme) => pageStyles(theme)} />
+
+            <button onClick={()=>toggleTheme(currentTheme)}>Toggle Theme</button>
+
+            <div css={(theme)=>testStyle(theme)} >
+                <h2>Test Card</h2>
+                <p>This is a test card</p>
+            </div>
+
+        </ThemeProvider>
+    )
 }
 
 export default App
