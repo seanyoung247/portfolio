@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { Global, css, ThemeProvider } from '@emotion/react'
 import themes, { ThemeName, Theme } from './theme'
+import { ThemeSwitcher } from './components/ThemeSwitcher'
 
 
 const pageStyles = (theme: Theme) => css`
@@ -35,6 +36,8 @@ const App = () => {
         <ThemeProvider theme={themes[currentTheme]}>
             <Global styles={(theme) => pageStyles(theme)} />
 
+            <ThemeSwitcher currentTheme={currentTheme} switchTheme={toggleTheme} />
+            
             <div css={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -46,9 +49,9 @@ const App = () => {
                     <h2>Test Card</h2>
                     <p>This is a test card</p>
                 </div>
-            <div css={(theme)=>testStyle(theme)} >
-                <h2>Test Card</h2>
-                <p>This is a test card</p>
+                <div css={(theme)=>testStyle(theme)} >
+                    <h2>Test Card</h2>
+                    <p>This is a test card</p>
                 </div>
             </div>
 
