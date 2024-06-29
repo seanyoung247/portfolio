@@ -1,10 +1,11 @@
 
 import { useTheme, css } from "@emotion/react"
-import { Theme, ThemeName } from "../theme"
+import { Theme } from "../theme"
 
-type ThemeSwitcherProps = {
-    currentTheme: ThemeName,
-    switchTheme: (theme: ThemeName) => void
+type ToggleThemeProps = {
+    // currentTheme: ThemeName,
+    // switchTheme: (theme: ThemeName) => void
+    toggleTheme: () => void
 }
 
 const styles = (theme: Theme) => css`
@@ -13,12 +14,12 @@ const styles = (theme: Theme) => css`
     padding: 0.5em;
 `
 
-export const ThemeSwitcher = ({currentTheme, switchTheme}: ThemeSwitcherProps) => {
+export const ToggleTheme = ({toggleTheme}: ToggleThemeProps) => {
     const theme = useTheme();
     return (
         <button 
             css={styles(theme)}
-            onClick={()=>switchTheme(currentTheme)}>
+            onClick={()=>toggleTheme()}>
             Toggle Theme
         </button>
     )

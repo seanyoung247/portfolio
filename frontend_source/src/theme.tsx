@@ -17,7 +17,7 @@ export enum ThemeName {
     dark = 'dark'
 }
 
-const themes: Record<ThemeName, Theme> = {
+export const themes: Record<ThemeName, Theme> = {
     [ThemeName.light]: {
         background: '#F0F0F0',
         contentBackground: '#FFFFFF',
@@ -43,5 +43,3 @@ const themes: Record<ThemeName, Theme> = {
         bodyFont: 'Roboto',
     }
 }
-
-export default themes;

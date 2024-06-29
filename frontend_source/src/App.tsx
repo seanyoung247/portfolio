@@ -1,8 +1,8 @@
 
-import { useState } from 'react'
 import { Global, css, ThemeProvider } from '@emotion/react'
-import themes, { ThemeName, Theme } from './theme'
-import { ThemeSwitcher } from './components/ThemeSwitcher'
+import { themes, Theme } from './theme'
+import { ToggleTheme } from './components/toggleTheme'
+import { useColorScheme } from './hooks/useColorScheme'
 
 
 const pageStyles = (theme: Theme) => css`
@@ -28,15 +28,13 @@ const testStyle = (theme: Theme) => css`
 `
 
 const App = () => {
-    const [currentTheme, setCurrentTheme] = useState<ThemeName>(ThemeName.light)
-
-    const toggleTheme = (theme: ThemeName) => setCurrentTheme(theme === ThemeName.light ? ThemeName.dark : ThemeName.light)
+    const [ currentTheme, toggleTheme ] = useColorScheme();
 
     return (
         <ThemeProvider theme={themes[currentTheme]}>
             <Global styles={(theme) => pageStyles(theme)} />
 
-            <ThemeSwitcher currentTheme={currentTheme} switchTheme={toggleTheme} />
+            <ToggleTheme toggleTheme={toggleTheme} />
             
             <div css={{
                 display: 'flex',
