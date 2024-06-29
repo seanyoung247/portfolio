@@ -3,9 +3,7 @@ import { useTheme, css } from "@emotion/react"
 import { Theme } from "../theme"
 
 type ToggleThemeProps = {
-    // currentTheme: ThemeName,
-    // switchTheme: (theme: ThemeName) => void
-    toggleTheme: () => void
+    toggleTheme: ()=>void
 }
 
 const styles = (theme: Theme) => css`
@@ -14,7 +12,9 @@ const styles = (theme: Theme) => css`
     padding: 0.5em;
 `
 
-export const ToggleTheme = ({toggleTheme}: ToggleThemeProps) => {
+// const options = ['light', 'dark', 'auto']
+
+export const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
     const theme = useTheme();
     return (
         <button 
