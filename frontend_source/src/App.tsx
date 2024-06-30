@@ -1,10 +1,11 @@
 
 import { Global, css, ThemeProvider } from '@emotion/react'
 import { themes, Theme } from './theme'
-import { ToggleTheme } from './components/toggleTheme'
+import { ToggleTheme } from './components/ToggleTheme'
 import { useColorScheme } from './hooks/useColorScheme'
 
 import Logo from './assets/logo.svg?react'
+import { ThemeIcon } from './components/ThemeIcon'
 
 
 const pageStyles = (theme: Theme) => css`
@@ -29,6 +30,11 @@ const testStyle = (theme: Theme) => css`
     border-bottom: 2px solid ${theme.primaryAccent};
 `
 
+const logoStyle = (theme: Theme) => css`
+    --foreground: ${theme.foreground};
+    --flash: ${theme.primaryAccent};
+`
+
 const App = () => {
     const [ currentTheme, toggleTheme ] = useColorScheme();
 
@@ -46,16 +52,23 @@ const App = () => {
                 gap: '1em',
             }}>
                 <div css={(theme)=>testStyle(theme)} >
-                    <h2>Test Card</h2>
+                    <h2>Sun Icon</h2>
                     <p>This is a test card</p>
+                    <ThemeIcon name='sun' />
                 </div>
                 <div css={(theme)=>testStyle(theme)} >
-                    <h2>Test Card</h2>
+                    <h2>Moon Icon</h2>
                     <p>This is a test card</p>
+                    <ThemeIcon name='moon' />
+                </div>
+                <div css={(theme)=>testStyle(theme)} >
+                    <h2>System Icon</h2>
+                    <p>This is a test card</p>
+                    <ThemeIcon name='system' />
                 </div>
             </div>
 
-            <Logo/>
+            <Logo css={(theme)=>logoStyle(theme)} />
 
         </ThemeProvider>
     )
