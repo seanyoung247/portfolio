@@ -4,6 +4,8 @@ import { themes, Theme } from './theme'
 import { ToggleTheme } from './components/toggleTheme'
 import { useColorScheme } from './hooks/useColorScheme'
 
+import Logo from './assets/logo.svg?react'
+
 
 const pageStyles = (theme: Theme) => css`
     body {
@@ -52,6 +54,8 @@ const App = () => {
                     <p>This is a test card</p>
                 </div>
             </div>
+
+            <Logo/>
 
         </ThemeProvider>
     )
