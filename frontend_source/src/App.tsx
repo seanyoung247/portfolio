@@ -4,8 +4,10 @@ import { themes, Theme } from './theme'
 import { ToggleTheme } from './components/ToggleTheme'
 import { useColorScheme } from './hooks/useColorScheme'
 
+import { SVGIcon } from './components/SVGIcon'
+
 import Logo from './assets/logo.svg?react'
-import { ThemeIcon } from './components/ThemeIcon'
+import themeIcons from './assets/theme_icons.svg'
 
 
 const pageStyles = (theme: Theme) => css`
@@ -36,6 +38,15 @@ const logoStyle = (theme: Theme) => css`
     width: 200px;
 `
 
+const iconStyle = (theme: Theme) => css`
+    stroke-linecap: square;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-width: 1.5;
+    stroke: ${theme.foreground};
+    fill: none;
+`
+
 const App = () => {
     const [ currentTheme, toggleTheme ] = useColorScheme();
 
@@ -55,17 +66,17 @@ const App = () => {
                 <div css={(theme)=>testStyle(theme)} >
                     <h2>Sun Icon</h2>
                     <p>This is a test card</p>
-                    <ThemeIcon name='sun' />
+                    <SVGIcon icons={themeIcons} name='sun' css={theme=>iconStyle(theme)} />
                 </div>
                 <div css={(theme)=>testStyle(theme)} >
                     <h2>Moon Icon</h2>
                     <p>This is a test card</p>
-                    <ThemeIcon name='moon' />
+                    <SVGIcon icons={themeIcons} name='moon' css={theme=>iconStyle(theme)} />
                 </div>
                 <div css={(theme)=>testStyle(theme)} >
                     <h2>System Icon</h2>
                     <p>This is a test card</p>
-                    <ThemeIcon name='system' />
+                    <SVGIcon icons={themeIcons} name='system' css={theme=>iconStyle(theme)} />
                 </div>
             </div>
 
