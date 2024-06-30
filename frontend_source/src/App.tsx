@@ -33,6 +33,7 @@ const testStyle = (theme: Theme) => css`
 const logoStyle = (theme: Theme) => css`
     --foreground: ${theme.foreground};
     --flash: ${theme.primaryAccent};
+    width: 200px;
 `
 
 const App = () => {
@@ -68,8 +69,13 @@ const App = () => {
                 </div>
             </div>
 
-            <Logo css={(theme)=>logoStyle(theme)} />
-
+            <div css={{
+                display: 'flex',
+                justifyContent: 'center',
+            }}>
+                <Logo css={(theme)=>logoStyle(theme)} />
+            </div>
+            
         </ThemeProvider>
     )
 }
