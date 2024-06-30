@@ -12,7 +12,7 @@
   <style>
     #moon-layer {
       fill: none;
-      stroke: black;
+      stroke: var(--foreground, black);
     }
     #moon-boundary {
       stroke: none;
