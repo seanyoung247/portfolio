@@ -3,28 +3,9 @@
     viewBox="0 0 400 450"
     version="1.1"
     id="logo"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns="http://www.w3.org/2000/svg">
 
-  <defs>   
-    <linearGradient id="s-shadow-gradient"
-      x1="168.6955" y1="255.57333"
-      x2="159.87851" y2="241.20482"
-      gradientUnits="userSpaceOnUse">
-        
-      <stop style="stop-color:#000000;stop-opacity:0.75;" offset="0.2" />
-      <stop style="stop-color:#000000;stop-opacity:0;" offset="1" />
-    </linearGradient>
-
-    <linearGradient id="y-shadow-gradient"
-      x1="199.38362" y1="369.17319"
-      x2="262.66681" y2="255.23326"
-      gradientUnits="userSpaceOnUse" >
-
-      <stop style="stop-color:#000000;stop-opacity:0.50;" offset="0.9" />
-      <stop style="stop-color:#000000;stop-opacity:0;" offset="1" />
-    </linearGradient>
-
+  <defs>
     <path id="path-y"
       d="m 206.946,45.2057 c 1.994,-13.4569 15.407,-0.2621 22.256,2.645 14.327,8.7018 29.528,16.1355 43.241,25.7292 8.695,10.2049 4.014,24.5349 5.213,36.7981 0.158,20.017 -0.32,40.061 0.244,60.059 1.715,17.482 22.442,14.822 17.436,-1.846 0.322,-25.36 -0.65,-50.805 0.497,-76.1109 6.669,-6.47 14.857,3.8611 21.758,6.4016 14.47,9.0343 30.368,16.0953 43.833,26.5203 7.854,10.016 3.472,23.629 4.622,35.416 -0.118,50.333 0.236,100.681 -0.177,151.003 -2.461,15.301 -19.508,18.871 -30.496,26.591 -43.758,24.944 -87.19,50.529 -131.151,75.07 -13.63,4.544 -24.37,-7.731 -35.886,-12.924 -11.715,-7.126 -24.148,-13.191 -35.378,-21.035 -3.627,-8.531 10.344,-10.655 15.402,-15.21 l 137.586,-80.367 c 12.091,-9.542 -0.648,-22.356 -10.947,-26.151 -20.958,-12.346 -42.539,-23.762 -63.095,-36.708 -8.312,-9.363 -3.791,-22.864 -4.958,-34.269 z"
     />
@@ -126,22 +107,14 @@
     </mask>
 
     <g id="outlines" mask="url(#outline-mask)">
-      <use xlink:href="#path-y" id="outline-y" class="logo-outline logo-path" />
-      <use xlink:href="#path-s" id="outline-s" class="logo-outline logo-path" />
+      <use href="#path-y" id="outline-y" class="logo-outline logo-path" />
+      <use href="#path-s" id="outline-s" class="logo-outline logo-path" />
     </g>
     <g id="filled" mask="url(#filled-mask)">          
-      <use xlink:href="#path-y" id="filled-y" class="logo-filled-yellow logo-path" />
-      <use xlink:href="#path-s" id="filled-s" class="logo-filled-blue logo-path" />
-
-      <!-- <path id="shadow-y" class="logo-shadow" style="fill:url(#y-shadow-gradient);opacity:0.75;"
-        d="m 367.851,311.222 c -0.623,15.972 -18.372,20.012 -29.357,27.585 -44.402,25.398 -88.622,51.13 -133.138,76.32 -13.24,6.031 -24.35,-6.44 -35.613,-11.598 -12.792,-7.9 -26.635,-14.35 -38.712,-23.24 -5.329,-9.305 9.064,-12.565 14.719,-16.947 46.142,-26.886 92.284,-53.772 138.427,-80.657 13.608,-5.038 -9.108,-25.161 6.532,-13.821 25.676,14.19 51.387,28.312 77.142,42.358 z"
-      />
-      <path id="shadow-s" class="logo-shadow" style="fill:url(#s-shadow-gradient);opacity:0.5;"
-        d="m 115.282,267.016 c 18.126,-3.006 6.03,15.827 -4.359,17.789 -21.1421,12.321 -42.5762,24.181 -63.5337,36.792 -8.2065,8.66 6.7419,13.723 12.6833,17.59 16.6589,9.075 32.5462,19.932 49.7484,27.754 13.998,-0.003 24.734,-10.846 36.87,-16.616 39.534,-22.923 79.237,-45.588 118.667,-68.671 8.792,-10.368 -6.125,-15.538 -13.175,-19.846 -17.354,-10.583 -35.895,-19.519 -52.422,-31.253 -2.49,-2.702 -4.073,-6.194 -4.553,-9.83"
-      /> -->
-      
+      <use href="#path-y" id="filled-y" class="logo-filled-yellow logo-path" />
+      <use href="#path-s" id="filled-s" class="logo-filled-blue logo-path" />
     </g>
-    <use xlink:href="#path-border" id="border" class="logo-border logo-path" />
+    <use href="#path-border" id="border" class="logo-border logo-path" />
   </g>
   <script>
     (()=>{
