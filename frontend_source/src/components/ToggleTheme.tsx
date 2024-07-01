@@ -39,7 +39,7 @@ export const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
         <button 
             css={styles(theme)}
             onClick={()=>toggleTheme(testSetting(setting))}>
-            Toggle Theme
+            Toggle Theme ({setting.current})
         </button>
     )
 }
