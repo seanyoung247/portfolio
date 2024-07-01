@@ -2,8 +2,13 @@
 import { useTheme, css } from "@emotion/react"
 import { Theme } from "../theme"
 
+import { SVGIcon } from './components/SVGIcon'
+
+import themeIcons from './assets/theme_icons.svg'
+import { useRef } from "react"
+
 type ToggleThemeProps = {
-    toggleTheme: ()=>void
+    toggleTheme: (theme: string)=>void,
 }
 
 const styles = (theme: Theme) => css`
@@ -12,14 +17,28 @@ const styles = (theme: Theme) => css`
     padding: 0.5em;
 `
 
-// const options = ['light', 'dark', 'auto']
+const options = [
+    { value: 'light', icon: 'sun' }, 
+    { value: 'dark', icon: 'moon' }, 
+    { value: 'auto', icon: 'system' }
+]
+
+const testSetting = (setting): string => {
+    if (setting.current === 'light') setting.current = 'dark'
+    else if (setting.current === 'dark') setting.current = 'auto'
+    else if (setting.current === 'auto') setting.current = 'light'
+
+    console.log(setting.current)
+    return setting.current
+}
 
 export const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
     const theme = useTheme();
+    const setting = useRef('auto')
     return (
         <button 
             css={styles(theme)}
-            onClick={()=>toggleTheme()}>
+            onClick={()=>toggleTheme(testSetting(setting))}>
             Toggle Theme
         </button>
     )
