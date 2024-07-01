@@ -54,7 +54,7 @@ const App = () => {
         <ThemeProvider theme={themes[currentTheme]}>
             <Global styles={(theme) => pageStyles(theme)} />
 
-            <ToggleTheme toggleTheme={toggleTheme} />
+            <ToggleTheme toggle={toggleTheme} />
             
             <div css={{
                 display: 'flex',

@@ -6,10 +6,11 @@ import { SVGIcon } from './SVGIcon'
 
 import themeIcons from '../assets/theme_icons.svg'
 import { Fragment, useState } from "react"
+import { SchemeToggler } from "../hooks/useColorScheme"
 
 
 type ToggleThemeProps = {
-    toggleTheme: (theme: string)=>void,
+    toggle: SchemeToggler,
 }
 
 const themedStyles = (theme: Theme) => css`
@@ -69,7 +70,7 @@ const options = Object.freeze([
     { name: 'auto', icon: 'system' }
 ])
 
-export const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
+export const ToggleTheme = ({ toggle }: ToggleThemeProps) => {
     const theme = useTheme()
     const styles = themedStyles(theme)
     const stored = localStorage.getItem('colorScheme')
@@ -77,9 +78,9 @@ export const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
         stored ? options.findIndex(option => option.name === stored) : options.length - 1
     )
 
-    const onToggle = ( e: React.ChangeEvent<HTMLInputElement> ) => {
-        toggleTheme(e.target.value)
-        setSelected(parseInt(e.target.dataset.index as string))
+    const onToggle = ( themeName: string, index: number ) => {
+        toggle(themeName)
+        setSelected(index)
     }
 
     return (
@@ -92,11 +93,8 @@ export const ToggleTheme = ({ toggleTheme }: ToggleThemeProps) => {
                         name="theme-select" 
                         type="radio" 
                         value={option.name}
-                        data-index={index}
-                        onChange={ onToggle }
-                        defaultChecked={
-                            options[selected].name === option.name
-                        } 
+                        onChange={ () => onToggle(option.name, index) }
+                        defaultChecked={selected === index} 
                     />
                     <label htmlFor={option.name}>
                         <SVGIcon icons={themeIcons} name={ option.icon } />

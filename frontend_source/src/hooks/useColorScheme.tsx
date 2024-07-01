@@ -1,18 +1,18 @@
 
-
 import { useEffect, useState } from "react"
 import { ThemeName } from "../theme"
 
 
 const mQ = window.matchMedia('(prefers-color-scheme: dark)')
-
 const getColorScheme = (mediaQuery = mQ):ThemeName => {
     const storedScheme = localStorage.getItem('colorScheme')
     const systemScheme = mediaQuery.matches ? ThemeName.dark : ThemeName.light
     return storedScheme ? storedScheme as ThemeName : systemScheme
 }
 
-export const useColorScheme = (): [ ThemeName, (scheme:string)=>void ] => {
+export type SchemeToggler = (scheme:string)=>void
+
+export const useColorScheme = (): [ ThemeName, SchemeToggler ] => {
 
     const [
         currentColorScheme, 
