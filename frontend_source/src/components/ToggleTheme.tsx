@@ -46,13 +46,13 @@ const themedStyles = (theme: Theme) => css`
         z-index: 2;
         width: calc(var(--item-size) * var(--icon-ratio));
         aspect-ratio: 1;
-        stroke: ${theme.foreground};
-        fill: none;
+        stroke: none;
+        fill:  ${theme.foreground};
     }
 
     input:checked + label > svg {
-        stroke: ${theme.altForeground};
-        transition: 0.1s 0.15s stroke;
+        fill: ${theme.altForeground};
+        transition: 0.1s 0.05s fill;
     }
 
     .toggle {
@@ -69,7 +69,7 @@ const themedStyles = (theme: Theme) => css`
         left: var(--padding);
 
         translate: calc(100% * var(--selected, 0));
-        transition: 0.25s translate;
+        transition: 0.15s translate;
     }
 `
 

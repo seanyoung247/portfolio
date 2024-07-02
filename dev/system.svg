@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
-   width="32mm"
-   height="32mm"
-   viewBox="0 0 32 32"
+   width="31.999992mm"
+   height="32.000004mm"
+   viewBox="0 0 31.999992 32.000004"
    version="1.1"
-   id="system-icon"
+   id="svg1"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-
-  <style
-     id="style1">
-    #system-layer {
-      fill: none;
-      stroke: none;
-    }
-    .outline {
-      stroke: var(--foreground, black);
-      stroke-width:1.5
-    }
-  </style>
-  <g id="system-layer">
-    <rect id="system-boundary" width="32" height="32" x="0" y="0" />
-    <g
-       id="system-group">
-      <path id="screen-path" class="outline"
-         d="M 5.64408 6.98985 L 26.3552 6.98985 C 26.7398 6.98985 27.0494 7.29944 27.0494 7.68401 L 27.0494 19.3455 C 27.0494 19.73 26.7398 20.0396 26.3552 20.0396 L 5.64408 20.0396 C 5.25952 20.0396 4.94992 19.73 4.94992 19.3455 L 4.94992 7.68401 C 4.94992 7.29944 5.25952 6.98985 5.64408 6.98985 Z"
-      />
-      <path id="stand-path" class="outline"
-         d="m 13.09275,20.20356 h 5.81378 v 4.765681 h -5.81378 z"
-      />
-      <path id="stand-base" class="outline"
-         d="M 9.9379398,24.8832 H 21.9366"
-      />
-    </g>
+  <defs
+     id="defs1" />
+  <g
+     id="system">
+    <rect
+       style="fill:#ff0101;fill-opacity:1;stroke:none;stroke-width:1;stroke-dashoffset:8.50394;stroke-opacity:1;paint-order:stroke markers fill"
+       id="system-boundary"
+       width="32"
+       height="32"
+       x="109.92233"
+       y="72.431114"
+       transform="translate(-109.922, -72.4311)" />
+    <path
+       id="system-body"
+       style="display:inline;fill:#000000;fill-opacity:1;paint-order:stroke markers fill;stroke:none;stroke-dasharray:none;stroke-dashoffset:8.50394;stroke-opacity:1;stroke-width:1.5"
+       d="M 16.0006 8.84508 C 14.1018 8.84497 12.2808 9.59877 10.9382 10.9406 C 9.59558 12.2825 8.84129 14.1025 8.84129 16.0002 C 8.84129 17.8979 9.59558 19.7179 10.9382 21.0598 C 12.2808 22.4016 14.1018 23.1554 16.0005 23.1553 C 19.9542 23.1552 23.1593 19.9518 23.1593 16.0002 C 23.1593 12.0486 19.9542 8.84516 16.0005 8.84508 Z M 16.0006 9.85225 C 19.3975 9.85224 22.1514 12.6045 22.1516 15.9997 C 22.1516 17.6302 21.5036 19.194 20.35 20.3469 C 19.1965 21.4999 17.6319 22.1476 16.0006 22.1476 Z" />
   </g>
 </svg>

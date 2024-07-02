@@ -39,12 +39,8 @@ const logoStyle = (theme: Theme) => css`
 `
 
 const iconStyle = (theme: Theme) => css`
-    stroke-linecap: square;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-    stroke-width: 1.5;
-    stroke: ${theme.foreground};
-    fill: none;
+    fill: ${theme.foreground};
+    stroke: none;
 `
 
 const App = () => {

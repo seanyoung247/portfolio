@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
    width="32mm"
-   height="32mm"
-   viewBox="0 0 32 32"
+   height="32.000004mm"
+   viewBox="0 0 32 32.000004"
    version="1.1"
-   id="moon-icon"
+   id="svg1"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
 
-  <style>
-    #moon-layer {
-      fill: none;
-      stroke: var(--foreground, black);
-    }
-    #moon-boundary {
-      stroke: none;
-    }
-    #moon-path {
-      stroke-width:1.5;
-      stroke-linecap:square;
-      stroke-linejoin:round;
-    }
-  </style>
-
-  <g id="moon-layer">
-    <rect id="moon-boundary" width="32" height="32" x="0" y="0"/>
-    <path id="moon-path"
-      d="m 14.12142,9.068152 c -1.227085,0.327371 -2.347788,0.977502 -3.248968,1.884943 -2.819,2.863674 -2.82021,7.50525 -0.0026,10.367388 2.817587,2.862035 7.386915,2.860909 10.206016,-0.0027 0.88918,-0.911435 1.527377,-2.043814 1.850963,-3.283951 -2.485834,0.670823 -5.134519,-0.05244 -6.952913,-1.898669 -1.813049,-1.851549 -2.518706,-4.543753 -1.852476,-7.067048 z"
-    />
+  <g id="moon">
+    <rect
+       style="fill:#ff0101;fill-opacity:1;stroke:none;stroke-width:1;stroke-dashoffset:8.50394;stroke-opacity:1;paint-order:stroke markers fill"
+       id="moon-boundary"
+       width="32"
+       height="32"
+       x="0"
+       y="0" />
+    <path
+       id="moon-body"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-dashoffset:8.50394;paint-order:stroke markers fill"
+       d="m 14.293603,8.971805 a 7.1551204,7.1588764 45 0 0 -3.222027,1.840199 7.1551204,7.1588764 45 0 0 -0.0026,10.121346 7.1551204,7.1588764 45 0 0 10.121344,-0.0026 7.1551204,7.1588764 45 0 0 1.835547,-3.206005 7.1551204,7.1588764 45 0 1 -6.895185,-1.853633 7.1551204,7.1588764 45 0 1 -1.837096,-6.899321 z" />
   </g>
 </svg>
