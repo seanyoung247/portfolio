@@ -35,7 +35,7 @@ const testStyle = (theme: Theme) => css`
 const logoStyle = (theme: Theme) => css`
     --foreground: ${theme.foreground};
     --flash: ${theme.primaryAccent};
-    width: 200px;
+    height: 5em;
 `
 
 const iconStyle = (theme: Theme) => css`

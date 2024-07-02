@@ -26,6 +26,7 @@ const themedStyles = (theme: Theme) => css`
     border: 1px solid ${theme.primaryAccent};
     border-radius: calc((var(--item-size) / 2) + var(--padding)) / 50%;
     background-color: ${theme.background};
+    box-shadow: inset 0 0 0.1em 0.05em ${theme.shadow};
 
     padding: var(--padding);
 
