@@ -12,16 +12,24 @@ type HeaderProps = {
 const headerStyles = (theme: Theme) => css`
     display: flex;
     gap: 1em;
+    justify-content: space-between;
+    align-items: center;
     position: fixed;
     width: 100%;
     background-color: ${theme.contentBackground};
     box-shadow: 0 0 5px ${theme.shadow};
     padding: 0.5em;
 
+    font-family: ${theme.titleFont};
+
     .logo {
         --foreground: ${theme.foreground};
         --flash: ${theme.primaryAccent};
         width: 48px;
+    }
+
+    h1 {
+        font-family: ${theme.titleFont};
     }
 `
 
@@ -31,6 +39,9 @@ export const Header = ({ toggleTheme }: HeaderProps) => {
         <header css={ headerStyles(theme) }>
             <Logo className='logo'/>
             <h1>Sean Young</h1>
+            About
+            Work
+            Contact
             <ToggleTheme toggle={ toggleTheme } />
         </header>
         <div></div>

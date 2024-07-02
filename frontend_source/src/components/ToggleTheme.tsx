@@ -14,13 +14,14 @@ type ToggleThemeProps = {
 }
 
 const themedStyles = (theme: Theme) => css`
-    --item-size: 1.5em;
+    --item-size: 2em;
     --icon-ratio: 0.8;
     --padding: 0.1em;
 
     display: inline-flex;
-    position: absolute;
-    top: 0.5em; right: 0.5em;
+    position: relative;
+    padding: var(--padding);
+    block-size: fit-content;
     width: auto;
 
     border: 1px solid ${theme.primaryAccent};
@@ -28,16 +29,12 @@ const themedStyles = (theme: Theme) => css`
     background-color: ${theme.background};
     box-shadow: inset 0 0 0.1em 0.05em ${theme.shadow};
 
-    padding: var(--padding);
-
-    input {
-        display: none;
-    }
+    input { display: none; }
 
     label {
         display: flex;
         width: var(--item-size);
-        aspect-ratio: 1;
+        height: var(--item-size);
         justify-content: center;
         align-items: center;
     }
