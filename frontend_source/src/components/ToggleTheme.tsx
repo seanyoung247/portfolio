@@ -15,7 +15,8 @@ type ToggleThemeProps = {
 
 const themedStyles = (theme: Theme) => css`
     --item-size: 1.5em;
-    --item-padding: 0.1em;
+    --icon-ratio: 0.8;
+    --padding: 0.1em;
 
     display: inline-flex;
     position: absolute;
@@ -23,19 +24,27 @@ const themedStyles = (theme: Theme) => css`
     width: auto;
 
     border: 1px solid ${theme.primaryAccent};
-    border-radius: calc((var(--item-size) / 2) + var(--item-padding)) / 50%;
-    background-color: ${theme.contentBackground};
+    border-radius: calc((var(--item-size) / 2) + var(--padding)) / 50%;
+    background-color: ${theme.background};
 
-    padding: var(--item-padding);
+    padding: var(--padding);
 
     input {
         display: none;
     }
 
+    label {
+        display: flex;
+        width: var(--item-size);
+        aspect-ratio: 1;
+        justify-content: center;
+        align-items: center;
+    }
+
     svg {
         position: relative;
         z-index: 2;
-        width: var(--item-size);
+        width: calc(var(--item-size) * var(--icon-ratio));
         aspect-ratio: 1;
         stroke: ${theme.foreground};
         fill: none;
@@ -47,17 +56,17 @@ const themedStyles = (theme: Theme) => css`
     }
 
     .toggle {
-        display: flex;
+        /* display: flex; */
         position: absolute;
-        justify-content: center;
-        align-items: center;
+        /* justify-content: center;
+        align-items: center; */
         width: var(--item-size);
         aspect-ratio: 1;
         background: ${theme.primaryAccent};
         border-radius: 50%;
 
-        top: var(--item-padding);
-        left: var(--item-padding);
+        top: var(--padding);
+        left: var(--padding);
 
         translate: calc(100% * var(--selected, 0));
         transition: 0.25s translate;
@@ -97,7 +106,7 @@ export const ToggleTheme = ({ toggle }: ToggleThemeProps) => {
                         defaultChecked={selected === index} 
                     />
                     <label htmlFor={option.name}>
-                        <SVGIcon icons={themeIcons} name={ option.icon } />
+                        <SVGIcon icons={ themeIcons } name={ option.icon } />
                     </label>
                 </Fragment>
             )) }
