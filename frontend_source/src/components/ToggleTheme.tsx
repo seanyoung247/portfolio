@@ -57,10 +57,7 @@ const themedStyles = (theme: Theme) => css`
     }
 
     .toggle {
-        /* display: flex; */
         position: absolute;
-        /* justify-content: center;
-        align-items: center; */
         width: var(--item-size);
         aspect-ratio: 1;
         background: ${theme.primaryAccent};

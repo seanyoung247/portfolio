@@ -31,8 +31,8 @@ export const themes: Record<ThemeName, Theme> = {
         bodyFont: 'Roboto',
     },
     [ThemeName.dark]: {
-        background: '#1E1E1E',
-        contentBackground: '#121212',
+        background: '#1F1F1F',
+        contentBackground: '#181818',
         foreground: '#FFFFFF',
         altForeground: '#010B13',
         primaryAccent: '#FFD43B',
