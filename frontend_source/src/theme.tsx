@@ -27,7 +27,7 @@ export const themes: Record<ThemeName, Theme> = {
         secondaryAccent: '#FFD43B',
         shadow: '#00000055',
 
-        titleFont: '"Zen Dots"',
+        titleFont: 'Orbitron',
         bodyFont: 'Roboto',
     },
     [ThemeName.dark]: {
@@ -39,7 +39,7 @@ export const themes: Record<ThemeName, Theme> = {
         secondaryAccent: '#306998',
         shadow: '#00000088',
 
-        titleFont: '"Zen Dots"',
+        titleFont: 'Orbitron',
         bodyFont: 'Roboto',
     }
 }
