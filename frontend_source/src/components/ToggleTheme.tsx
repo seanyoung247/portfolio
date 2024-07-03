@@ -10,6 +10,7 @@ import { SchemeToggler } from "../hooks/useColorScheme"
 
 
 type ToggleThemeProps = {
+    className?: string,
     toggle: SchemeToggler,
 }
 
@@ -74,7 +75,7 @@ const options = Object.freeze([
     { name: 'auto', icon: 'system' }
 ])
 
-export const ToggleTheme = ({ toggle }: ToggleThemeProps) => {
+export const ToggleTheme = ({ className, toggle }: ToggleThemeProps) => {
     const theme = useTheme()
     const styles = themedStyles(theme)
     const stored = localStorage.getItem('colorScheme')
@@ -88,7 +89,12 @@ export const ToggleTheme = ({ toggle }: ToggleThemeProps) => {
     }
 
     return (
-        <fieldset css={styles} style={{'--selected': selected}}>
+        <fieldset 
+            aria-label="Switch theme"
+            css={styles} 
+            className={ className } 
+            style={{'--selected': selected}}
+        >
 
             { options.map( (option, index) => (
                 <Fragment key={option.name}>
@@ -98,7 +104,8 @@ export const ToggleTheme = ({ toggle }: ToggleThemeProps) => {
                         type="radio" 
                         value={option.name}
                         onChange={ () => onToggle(option.name, index) }
-                        defaultChecked={selected === index} 
+                        defaultChecked={selected === index}
+                        aria-label={`${option.name} theme`}
                     />
                     <label htmlFor={option.name}>
                         <SVGIcon icons={ themeIcons } name={ option.icon } />
