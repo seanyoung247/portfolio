@@ -62,7 +62,7 @@ const App = () => {
             <Global styles={ pageStyles(theme) } />
 
             <Header css={ headerStyles(theme) }>
-                <a><Logo className='logo'/></a>
+                <a href="#top"><Logo className='logo'/></a>
                 <h1>Sean Young</h1>
                 <nav id="main-menu">
                     <ul>
@@ -75,7 +75,8 @@ const App = () => {
             </Header>
 
             <div css={{
-                height: '500vh'
+                height: '500vh',
+                background: "linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)"
             }} />
             
         </ThemeProvider>
