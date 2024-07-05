@@ -12,32 +12,33 @@ const pageStyles = (theme: Theme) => css`
     * {
         scrollbar-color: ${theme.foreground} ${theme.contentBackground};
     }
-    body {
+    html, body {
         background-color: ${theme.background};
         color: ${theme.foreground};
         font-family: ${theme.bodyFont};
+        scroll-behavior: smooth;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: ${theme.titleFont};
+    }
+    a:visited {
+        color: ${theme.foreground};
     }
 `
 
 const headerStyles = (theme: Theme) => css`
-    /* flex: 1 1 0px; */
     justify-content: flex-start;
 
-    & > * {
-        /* border-left: 1px solid red;
-        border-right: 1px solid red; */
-        /* flex: 1 1 0; */
-    }
 
     .logo {
         --foreground: ${theme.foreground};
         --flash: ${theme.primaryAccent};
-        width: 48px;
+        width: 3em;
     }
 
     h1 {
         text-align: center;
-        font-family: ${theme.titleFont};
+        font-size: 1.5em;
     }
 
     nav {
@@ -51,6 +52,11 @@ const headerStyles = (theme: Theme) => css`
         align-items: center;
         gap: 2em;
     }
+
+    nav > ul > li {
+        font-size: 1em;
+        font-weight: bold;
+    }
 `
 
 const App = () => {
@@ -62,22 +68,45 @@ const App = () => {
             <Global styles={ pageStyles(theme) } />
 
             <Header css={ headerStyles(theme) }>
-                <a href="#top"><Logo className='logo'/></a>
+                <a href="#top" className='logo'><Logo /></a>
                 <h1>Sean Young</h1>
                 <nav id="main-menu">
                     <ul>
-                        <li><a>About</a></li>
-                        <li><a>Work</a></li>
-                        <li><a>Contact</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
                         <li><ToggleTheme toggle={ toggleTheme } /></li>
                     </ul>
                 </nav>
             </Header>
 
-            <div css={{
-                height: '500vh',
-                background: "linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)"
-            }} />
+            <main css={{
+                'section:nth-child(odd)': {
+                    backgroundColor: theme.background,
+                },
+                'section:nth-child(even)': {
+                    backgroundColor: theme.altBackground,
+                }
+            }}>
+                <section id="about" css={{
+                    minHeight: '100lvh',
+                    paddingTop: '5em',
+                }}>
+                    <h2>About</h2>
+                </section>
+                <section id="projects" css={{
+                    minHeight: '100lvh',
+                    paddingTop: '5em',
+                }}>
+                    <h2>Projects</h2>
+                </section>
+                <section id="contact" css={{
+                    minHeight: '100lvh',
+                    paddingTop: '5em',
+                }}>
+                    <h2>Contact</h2>
+                </section>
+            </main>
             
         </ThemeProvider>
     )

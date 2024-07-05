@@ -15,9 +15,9 @@ type ToggleThemeProps = {
 }
 
 const themedStyles = (theme: Theme) => css`
-    --item-size: 2em;
+    --item-size: 1.5rem;
     --icon-ratio: 0.8;
-    --padding: 0.1em;
+    --padding: 0.1rem;
 
     display: inline-flex;
     position: relative;
@@ -28,7 +28,7 @@ const themedStyles = (theme: Theme) => css`
     border: 1px solid ${theme.primaryAccent};
     border-radius: calc((var(--item-size) / 2) + var(--padding)) / 50%;
     background-color: ${theme.background};
-    box-shadow: inset 0 0 0.1em 0.05em ${theme.shadow};
+    box-shadow: inset 0 0 0.1rem 0.05rem ${theme.shadow};
 
     input { display: none; }
 
