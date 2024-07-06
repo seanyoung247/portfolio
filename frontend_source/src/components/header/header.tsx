@@ -1,65 +1,13 @@
 
-import { css, useTheme } from '@emotion/react'
+import { useTheme } from '@emotion/react'
 
-import { Theme } from '../../theme'
 import { SchemeToggler } from '../../hooks/useColorScheme'
 import { SplashHeader } from './SplashHeader'
 import { ToggleTheme } from '../ToggleTheme'
 
 import Logo from '../../assets/logo.svg?react'
+import { headerStyles } from './headerStyles'
 
-
-const headerStyles = (theme: Theme) => css`
-    justify-content: space-evenly;
-    height: 100lvh;
-
-    .header-item {
-        flex: 1 1 0;
-    }
-
-    .logo {
-        --foreground: ${theme.foreground};
-        --flash: ${theme.primaryAccent};
-        
-        width: 25lvh;
-        max-width: 33%;
-    }
-
-    h1 {
-        text-align: center;
-        font-size: 1.5em;
-    }
-
-    .menu-items {
-        display: flex;
-        list-style: none;
-        justify-content: space-between;
-        align-items: center;
-
-        flex-direction: column;
-    }
-
-    .menu-item {
-        font-size: 1em;
-        font-weight: bold;
-    }
-
-    :not(.expanded) & {
-        justify-content: flex-start; 
-    }
-
-    :not(.expanded) .logo {
-        width: 3em;
-    }
-
-    :not(.expanded) #main-menu {
-        margin-left: auto;
-    }
-
-    :not(.expanded) .menu-items {
-       flex-direction: row;
-    }
-`
 
 type HeaderProps = {
     toggleTheme: SchemeToggler
@@ -69,7 +17,7 @@ export const Header = ({ toggleTheme }: HeaderProps) => {
     const theme = useTheme()
 
     return (
-        <SplashHeader css={ headerStyles(theme) }>
+        <SplashHeader css={ headerStyles(theme) } height="4em">
             <a href="#top" className='logo header-item'>
                 <Logo />
             </a>

@@ -5,11 +5,11 @@ import { Theme } from '../../theme'
 import { classList } from "../../utilities/classlist"
 
 
-const headerStyles = (theme: Theme) => css`
+const headerStyles = (theme: Theme, height: string) => css`
     position: fixed;
     z-index: 9;
     width: 100%;
-    height: 4em;
+    height: ${height};
     padding: 0.5em;
 
     display: flex;
@@ -27,35 +27,45 @@ const headerStyles = (theme: Theme) => css`
 type SplashHeaderProps = {
     className?: string,
     children: React.ReactNode,
+    height?: string,
 }
 
-export const SplashHeader = ({className, children}: SplashHeaderProps) => {
+export const SplashHeader = ({className, children, height='4em'}: SplashHeaderProps) => {
     const theme = useTheme()
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(true)
+
     return (
         <>
-            <header className={ classList( className, expanded&&' expanded' ) } css={ headerStyles(theme) }>
+            <header 
+                className={ classList( className, expanded&&'expanded' ) } 
+                css={ headerStyles(theme, height) }
+            >
                 { children }
             </header>
             <div css={{
-                height: 'calc(100lvh - 4em)',
+                height: `calc(100lvh - ${height} + 1px)`,
+                marginBottom: '-1px',
                 background: theme.contentBackground,
-            }}></div>
+            }} />
             <div css={{
                 position: 'sticky',
                 top: 0,
-                height: '4em',
+                height: height,
                 background: theme.contentBackground,
-                boxShadow: '0 5px 5px -5px black',
-            }}></div>
+                boxShadow: `0 5px 5px -5px ${theme.shadow}`,
+            }} />
+
+
             <button css={{
-                position: 'fixed',
-                top: 0,
-                zIndex: 99,
-            }}
-            onClick={()=>setExpanded(!expanded)}>
+                    position: 'fixed',
+                    top: 0,
+                    zIndex: 99,
+                }}
+                onClick={()=>setExpanded(!expanded)}>
                 Test
             </button>
+
+
         </>
     )
 }

@@ -13,7 +13,6 @@ const getColorScheme = (mediaQuery = mQ):ThemeName => {
 export type SchemeToggler = (scheme:string)=>void
 
 export const useColorScheme = (): [ ThemeName, SchemeToggler ] => {
-
     const [
         currentColorScheme, 
         setCurrentColorScheme
