@@ -9,11 +9,6 @@ import { Fragment, useState } from "react"
 import { SchemeToggler } from "../hooks/useColorScheme"
 
 
-type ToggleThemeProps = {
-    className?: string,
-    toggle: SchemeToggler,
-}
-
 const themedStyles = (theme: Theme) => css`
     --item-size: 1.5rem;
     --icon-ratio: 0.8;
@@ -74,6 +69,11 @@ const options = Object.freeze([
     { name: 'dark', icon: 'moon' }, 
     { name: 'auto', icon: 'system' }
 ])
+
+type ToggleThemeProps = {
+    className?: string,
+    toggle: SchemeToggler,
+}
 
 export const ToggleTheme = ({ className, toggle }: ToggleThemeProps) => {
     const theme = useTheme()

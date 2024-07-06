@@ -3,9 +3,10 @@ import { Global, css, ThemeProvider } from '@emotion/react'
 import { themes, Theme } from './theme'
 import { ToggleTheme } from './components/ToggleTheme'
 import { useColorScheme } from './hooks/useColorScheme'
-import { Header } from './components/Header'
+import { SplashHeader } from './components/header/SplashHeader'
 
 import Logo from './assets/logo.svg?react'
+import { Header } from './components/header/header'
 
 
 const pageStyles = (theme: Theme) => css`
@@ -21,41 +22,9 @@ const pageStyles = (theme: Theme) => css`
     h1, h2, h3, h4, h5, h6 {
         font-family: ${theme.titleFont};
     }
-    a:visited {
+    a, a:visited {
         color: ${theme.foreground};
-    }
-`
-
-const headerStyles = (theme: Theme) => css`
-    justify-content: flex-start;
-
-
-    .logo {
-        --foreground: ${theme.foreground};
-        --flash: ${theme.primaryAccent};
-        width: 3em;
-    }
-
-    h1 {
-        text-align: center;
-        font-size: 1.5em;
-    }
-
-    nav {
-        margin-left: auto;
-    }
-
-    nav > ul {
-        display: flex;
-        list-style: none;
-        justify-content: space-between;
-        align-items: center;
-        gap: 2em;
-    }
-
-    nav > ul > li {
-        font-size: 1em;
-        font-weight: bold;
+        
     }
 `
 
@@ -67,24 +36,13 @@ const App = () => {
         <ThemeProvider theme={themes[currentTheme]}>
             <Global styles={ pageStyles(theme) } />
 
-            <Header css={ headerStyles(theme) }>
-                <a href="#top" className='logo'><Logo /></a>
-                <h1>Sean Young</h1>
-                <nav id="main-menu">
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><ToggleTheme toggle={ toggleTheme } /></li>
-                    </ul>
-                </nav>
-            </Header>
+            <Header toggleTheme={ toggleTheme } />
 
             <main css={{
-                'section:nth-child(odd)': {
+                'section:nth-of-type(odd)': {
                     backgroundColor: theme.background,
                 },
-                'section:nth-child(even)': {
+                'section:nth-of-type(even)': {
                     backgroundColor: theme.altBackground,
                 }
             }}>
