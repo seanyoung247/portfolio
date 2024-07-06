@@ -1,11 +1,8 @@
 
 import { Global, css, ThemeProvider } from '@emotion/react'
 import { themes, Theme } from './theme'
-import { ToggleTheme } from './components/ToggleTheme'
 import { useColorScheme } from './hooks/useColorScheme'
-import { SplashHeader } from './components/header/SplashHeader'
 
-import Logo from './assets/logo.svg?react'
 import { Header } from './components/header/header'
 
 
