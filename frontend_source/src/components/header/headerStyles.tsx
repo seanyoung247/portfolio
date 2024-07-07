@@ -2,6 +2,7 @@
 import { css } from '@emotion/react'
 import { Theme } from '../../theme'
 
+
 export const headerStyles = (theme: Theme) => css`
 
     /* Splash screen and base styles */
@@ -47,7 +48,11 @@ export const headerStyles = (theme: Theme) => css`
     }
 
     .menu-item {
-        font-size: 1em;
+        font-size: 1.5em;
+    }
+
+    .menu-item > a {
+        text-decoration: none;
     }
 
     /* Menubar styles */
@@ -76,5 +81,9 @@ export const headerStyles = (theme: Theme) => css`
 
     :not(.expanded) .menu-items {
        flex-direction: row;
+    }
+
+    :not(.expanded) .menu-item {
+        font-size: 1em;
     }
 `

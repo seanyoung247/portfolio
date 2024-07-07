@@ -49,7 +49,9 @@ export const SplashHeader = ({className, children, height='4em'}: SplashHeaderPr
                 className={ classList( className, expanded&&'expanded' ) } 
                 css={ headerStyles(theme, height) }
             >
+                
                 { children }
+
             </header>
             <div css={{
                 height: `calc(100lvh - ${height} + 1px)`,

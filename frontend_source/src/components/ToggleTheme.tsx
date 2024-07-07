@@ -25,10 +25,16 @@ const themedStyles = (theme: Theme) => css`
     background-color: ${theme.background};
     box-shadow: inset 0 0 0.1rem 0.05rem ${theme.shadow};
 
-    input { display: none; }
+    input {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        opacity: 0;
+    }
 
     label {
         display: flex;
+        position: relative;
         width: var(--item-size);
         height: var(--item-size);
         justify-content: center;
@@ -41,7 +47,7 @@ const themedStyles = (theme: Theme) => css`
         width: calc(var(--item-size) * var(--icon-ratio));
         aspect-ratio: 1;
         stroke: none;
-        fill:  ${theme.foreground};
+        fill: ${theme.foreground};
     }
 
     input:checked + label > svg {
@@ -107,7 +113,7 @@ export const ToggleTheme = ({ className, toggle }: ToggleThemeProps) => {
                         defaultChecked={ selected === index }
                         aria-label={ option.description }
                     />
-                    <label htmlFor={option.name}>
+                    <label htmlFor={option.name} aria-hidden="true">
                         <SVGIcon icons={ themeIcons } name={ option.icon } />
                     </label>
                 </Fragment>
