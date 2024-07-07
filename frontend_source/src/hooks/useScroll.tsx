@@ -54,13 +54,21 @@ const calcScrollData = (last: ScrollData): ScrollData => {
 
 const options = ({ passive: true } as unknown) as EventListenerOptions
 
+/**
+ * Hook that provides the current scroll state
+ * @returns {ScrollData} Current scroll state
+ */
 export const useScrollState = () => {
     const [scroll, setScroll] = useState<ScrollData>(defaultScrollData())
     useScrollAnimation(setScroll)
     return scroll
 }
 
-export const useScrollPosition = (effect: ScrollCallback) => {
+/**
+ * Hook that runs an effect when the scroll event occurs.
+ * @param {ScrollCallback} effect Function to call on scroll event
+ */
+export const useScrollEvent = (effect: ScrollCallback) => {
     const scrollData = useRef<ScrollData>(defaultScrollData())
 
     useEffect(() => {
@@ -78,6 +86,10 @@ export const useScrollPosition = (effect: ScrollCallback) => {
     }, [effect])
 }
 
+/**
+ * Hook that runs an effect during frame update when scroll state changes.
+ * @param {ScrollCallback} effect Function to call when scroll state changes 
+ */
 export const useScrollAnimation = (effect: ScrollCallback) => {
     const scrollData = useRef<ScrollData>(defaultScrollData())
 
