@@ -1,6 +1,6 @@
 
 import { css } from '@emotion/react'
-import { Theme } from '../../theme'
+import { Theme } from '~/theme'
 
 
 export const headerStyles = (theme: Theme) => css`

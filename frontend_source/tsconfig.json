@@ -16,6 +16,8 @@
 
     "jsxImportSource": "@emotion/react",
 
+    "paths": { "~/*": ["./src/*"] },
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

@@ -1,7 +1,7 @@
 
 import React from "react"
 import { useTheme, css } from "@emotion/react"
-import { Theme } from '../../theme'
+import { Theme } from '~/theme'
 
 
 const headerStyles = (theme: Theme, height: string) => css`

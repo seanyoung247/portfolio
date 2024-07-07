@@ -1,15 +1,15 @@
 
 import { useTheme } from '@emotion/react'
-import { SchemeToggler } from '../../hooks/useColorScheme'
+import { SchemeToggler } from '~/hooks/useColorScheme'
 import { SplashHeader } from './SplashHeader'
 import { ToggleTheme } from '../ToggleTheme'
 
 import { useContext } from 'react'
-import { scrollContext } from '../../hooks/useScroll'
-import { classList } from '../../utilities/classlist'
+import { scrollContext } from '~/hooks/useScroll'
+import { classList } from '~/utilities/classlist'
 
 import { headerStyles } from './headerStyles'
-import Logo from '../../assets/logo.svg?react'
+import Logo from '~/assets/logo.svg?react'
 
 
 type HeaderProps = {
@@ -19,7 +19,7 @@ type HeaderProps = {
 export const Header = ({ toggleTheme }: HeaderProps) => {
     const theme = useTheme()
     const scroll = useContext(scrollContext)
-
+    // If scrolling up within the first page or at the very top, expand the splash screen
     const expanded = (scroll.direction.y === -1 && scroll.page.y < 1 || scroll.current.y === 0)
 
     return (
