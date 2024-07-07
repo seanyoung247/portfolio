@@ -65,9 +65,9 @@ const themedStyles = (theme: Theme) => css`
 `
 
 const options = Object.freeze([
-    { name: 'light', icon: 'sun' }, 
-    { name: 'dark', icon: 'moon' }, 
-    { name: 'auto', icon: 'system' }
+    { name: 'light', icon: 'sun', description: 'Light theme'}, 
+    { name: 'dark', icon: 'moon', description: 'Dark theme' }, 
+    { name: 'auto', icon: 'system', description: 'System default theme' }
 ])
 
 type ToggleThemeProps = {
@@ -91,21 +91,21 @@ export const ToggleTheme = ({ className, toggle }: ToggleThemeProps) => {
     return (
         <fieldset 
             aria-label="Switch theme"
-            css={styles} 
+            css={ styles } 
             className={ className } 
-            style={{'--selected': selected}}
+            style={ {'--selected': selected} }
         >
 
             { options.map( (option, index) => (
-                <Fragment key={option.name}>
+                <Fragment key={ option.name }>
                     <input
-                        id={option.name}
+                        id={ option.name }
                         name="theme-select" 
                         type="radio" 
-                        value={option.name}
+                        value={ option.name }
                         onChange={ () => onToggle(option.name, index) }
-                        defaultChecked={selected === index}
-                        aria-label={`${option.name} theme`}
+                        defaultChecked={ selected === index }
+                        aria-label={ option.description }
                     />
                     <label htmlFor={option.name}>
                         <SVGIcon icons={ themeIcons } name={ option.icon } />

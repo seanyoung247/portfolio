@@ -30,6 +30,15 @@ type SplashHeaderProps = {
     height?: string,
 }
 
+/**
+ * Renders a component that switches between a full height splash screen and a navbar
+ * 
+ * @param props
+ *  @param props.className 
+ *  @param props.children
+ *  @param props.height 
+ * @returns Splash screen/Header component
+ */
 export const SplashHeader = ({className, children, height='4em'}: SplashHeaderProps) => {
     const theme = useTheme()
     const [expanded, setExpanded] = useState(true)
