@@ -30,8 +30,7 @@ type SplashHeaderProps = {
 }
 
 /**
- * Renders a component that switches between a full height splash screen and a navbar
- * 
+ * Renders a component that switches between a full height splash screen and a navbar.
  * @param props
  *  @param props.className 
  *  @param props.children
