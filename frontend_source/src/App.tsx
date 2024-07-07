@@ -4,6 +4,7 @@ import { themes, Theme } from './theme'
 import { useColorScheme } from './hooks/useColorScheme'
 
 import { Header } from './components/header/header'
+import { scrollContext, useScrollState } from './hooks/useScroll'
 
 
 const pageStyles = (theme: Theme) => css`
@@ -29,40 +30,45 @@ const App = () => {
     const [ currentTheme, toggleTheme ] = useColorScheme();
     const theme = themes[currentTheme]
 
+    const scroll = useScrollState()
+
     return (
         <ThemeProvider theme={themes[currentTheme]}>
-            <Global styles={ pageStyles(theme) } />
+            <scrollContext.Provider value={ scroll }>
 
-            <Header toggleTheme={ toggleTheme } />
+                <Global styles={ pageStyles(theme) } />
 
-            <main css={{
-                'section:nth-of-type(odd)': {
-                    backgroundColor: theme.background,
-                },
-                'section:nth-of-type(even)': {
-                    backgroundColor: theme.altBackground,
-                }
-            }}>
-                <section id="about" css={{
-                    minHeight: '100lvh',
-                    paddingTop: '5em',
+                <Header toggleTheme={ toggleTheme } />
+
+                <main css={{
+                    'section:nth-of-type(odd)': {
+                        backgroundColor: theme.background,
+                    },
+                    'section:nth-of-type(even)': {
+                        backgroundColor: theme.altBackground,
+                    }
                 }}>
-                    <h2>About</h2>
-                </section>
-                <section id="projects" css={{
-                    minHeight: '100lvh',
-                    paddingTop: '5em',
-                }}>
-                    <h2>Projects</h2>
-                </section>
-                <section id="contact" css={{
-                    minHeight: '100lvh',
-                    paddingTop: '5em',
-                }}>
-                    <h2>Contact</h2>
-                </section>
-            </main>
-            
+                    <section id="about" css={{
+                        minHeight: '100lvh',
+                        paddingTop: '5em',
+                    }}>
+                        <h2>About</h2>
+                    </section>
+                    <section id="projects" css={{
+                        minHeight: '100lvh',
+                        paddingTop: '5em',
+                    }}>
+                        <h2>Projects</h2>
+                    </section>
+                    <section id="contact" css={{
+                        minHeight: '100lvh',
+                        paddingTop: '5em',
+                    }}>
+                        <h2>Contact</h2>
+                    </section>
+                </main>
+
+            </scrollContext.Provider>
         </ThemeProvider>
     )
 }

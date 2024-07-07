@@ -1,8 +1,9 @@
 
-import { useEffect, useRef, useState } from 'react'
+import { createContext, useEffect, useRef, useState } from 'react'
 import { useAnimationFrame } from './useAnimationFrame'
 
-export type point = {
+
+type point = {
     x: number, y: number
 }
 
@@ -12,19 +13,25 @@ export type ScrollData = {
     current: point,
     previous: point,
     progress: point,
+    direction: point,
     delta: point,
+    page: point,
 }
 
 export type ScrollCallback = (s:ScrollData) => void
 
-const defaultScrollData = () => ({
+export const defaultScrollData = (): ScrollData => ({
     scrolling: false, 
     start: {x:0, y:0},
     current: {x:0, y:0},
     previous: {x:0, y:0},
     progress: {x:0, y:0},
-    delta: {x:0, y:0}
+    direction: {x:0, y:0},
+    delta: {x:0, y:0},
+    page: {x:0, y:0},
 })
+
+export const scrollContext = createContext(defaultScrollData())
 
 const scrollStateChanged = (last:ScrollData, delta:point):boolean => (
     !last.scrolling ||
@@ -43,12 +50,20 @@ const calcScrollData = (last: ScrollData): ScrollData => {
         x: current.x - previous.x,
         y: current.y - previous.y
     }
+    const page = {
+        x: current.x / window.innerWidth,
+        y: current.y / window.innerHeight,
+    }
+    const direction = {
+        x: Math.sign(delta.x),
+        y: Math.sign(delta.y),
+    }
     const start = (scrollStateChanged(last, delta)) ?
         {...current} : last.start
 
     return {
         scrolling: (delta.x + delta.y !== 0),
-        start, current, previous, progress, delta
+        start, current, previous, progress, direction, delta, page
     }
 }
 

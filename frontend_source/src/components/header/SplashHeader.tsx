@@ -1,8 +1,7 @@
 
-import React, { useState } from "react"
+import React from "react"
 import { useTheme, css } from "@emotion/react"
 import { Theme } from '../../theme'
-import { classList } from "../../utilities/classlist"
 
 
 const headerStyles = (theme: Theme, height: string) => css`
@@ -41,15 +40,14 @@ type SplashHeaderProps = {
  */
 export const SplashHeader = ({className, children, height='4em'}: SplashHeaderProps) => {
     const theme = useTheme()
-    const [expanded, setExpanded] = useState(true)
 
     return (
         <>
             <header 
-                className={ classList( className, expanded&&'expanded' ) } 
+                className={ className }
                 css={ headerStyles(theme, height) }
             >
-                
+
                 { children }
 
             </header>
@@ -65,17 +63,6 @@ export const SplashHeader = ({className, children, height='4em'}: SplashHeaderPr
                 background: theme.contentBackground,
                 boxShadow: `0 5px 5px -5px ${theme.shadow}`,
             }} />
-
-
-            <button css={{
-                    position: 'fixed',
-                    top: 0,
-                    zIndex: 99,
-                }}
-                onClick={()=>setExpanded(!expanded)}>
-                Test
-            </button>
-
 
         </>
     )
