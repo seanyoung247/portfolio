@@ -1,10 +1,14 @@
 
-import React, { useRef, forwardRef, Children, ReactElement, JSXElementConstructor} from "react"
+import React, { useRef, forwardRef, Children, ReactElement } from "react"
 import { useOptionalRef, useLayoutChange } from "./hooks"
 import { getBlankState } from "./utils"
 
 
-type AnimateLayoutProps = React.PropsWithChildren
+type AnimateBaseProps<childType> = {
+    children: childType
+}
+type AnimateLayoutProps = AnimateBaseProps<ReactElement>
+type AnimateMultiLayoutProps = AnimateBaseProps<ReactElement[]>
 
 type AnimateRef = HTMLElement
 type ElementRef = React.MutableRefObject<HTMLElement>
@@ -16,7 +20,9 @@ export const AnimateLayout = forwardRef<AnimateRef, AnimateLayoutProps>(
         const element = ref.current
         const previous = useRef(getBlankState())
 
-        if (previous.current.animation) {}
+        if (previous.current.animation) { 
+            console.log('No anims yet!')
+        }
 
         useLayoutChange(element, previous.current, (oldLayout, newLayout) => {
             console.log(oldLayout, newLayout)
@@ -28,7 +34,7 @@ export const AnimateLayout = forwardRef<AnimateRef, AnimateLayoutProps>(
     }
 )
 
-export const AnimateMultiLayout = (props: AnimateLayoutProps) => (
+export const AnimateMultiLayout = (props: AnimateMultiLayoutProps) => (
     <>{
         Children.map(props.children, (child, index) => (
             <AnimateLayout key={ index } { ...props }>

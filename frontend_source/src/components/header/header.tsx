@@ -10,7 +10,7 @@ import { classList } from '~/utilities/classlist'
 
 import { headerStyles } from './headerStyles'
 import Logo from '~/assets/logo.svg?react'
-import { AnimateMultiLayout } from '~/libs/AnimateLayout/AnimateLayout'
+import { AnimateMultiLayout } from '~/libs/animateLayout/AnimateLayout'
 
 
 type HeaderProps = {
