@@ -1,6 +1,5 @@
 
-export interface LayoutState {
-    animation: null,
+export interface ElementLayout {
     x: number,
     y: number,
     top: number,
@@ -11,8 +10,13 @@ export interface LayoutState {
     width: number,
 }
 
-export const getLayoutState = 
-    (el:HTMLElement): LayoutState | null => (el ? {
+export interface LayoutState {
+    animation: null,
+    layout: ElementLayout | null,
+}
+
+export const getLayout = (el:HTMLElement | null): ElementLayout | null => (
+    el ? {
         x: el.offsetLeft,
         y: el.offsetTop,
         top: el.offsetTop,
@@ -21,19 +25,27 @@ export const getLayoutState =
         bottom: el.offsetTop + el.offsetHeight,
         height: el.offsetHeight,
         width: el.offsetWidth,
-        animation: null,
     } : null
 )
 
-export const layoutHasChanged = 
-    (current:LayoutState, previous:LayoutState) => (!(
-        current.x === previous.x &&
-        current.y === previous.y &&
-        current.left === previous.left &&
-        current.top === previous.top &&
-        current.right === previous.right &&
-        current.bottom === previous.bottom &&
-        current.width === previous.width &&
-        current.height === previous.height
-    )
-);
+export const getBlankState = () => ({
+    animation: null,
+    layout: null,
+})
+
+export const layoutHasChanged = (
+    current:ElementLayout, 
+    previous:ElementLayout
+):boolean => (!(
+
+    current.x === previous.x &&
+    current.y === previous.y &&
+    current.left === previous.left &&
+    current.top === previous.top &&
+    current.right === previous.right &&
+    current.bottom === previous.bottom &&
+    current.width === previous.width &&
+    current.height === previous.height
+))
+
+export type LayoutCallback = (previous:ElementLayout, current:ElementLayout) => void
