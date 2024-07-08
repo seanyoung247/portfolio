@@ -10,6 +10,7 @@ import { classList } from '~/utilities/classlist'
 
 import { headerStyles } from './headerStyles'
 import Logo from '~/assets/logo.svg?react'
+import { AnimateLayout } from '~/libs/AnimateLayout/AnimateLayout'
 
 
 type HeaderProps = {
@@ -27,9 +28,13 @@ export const Header = ({ toggleTheme }: HeaderProps) => {
             <a href="#top" className='logo header-item'>
                 <Logo />
             </a>
-            <h1 className='header-item'>
-                Sean Young
-            </h1>
+
+            <AnimateLayout>
+                <h1 className='header-item'>
+                    Sean Young
+                </h1>
+            </AnimateLayout>
+
             <nav id="main-menu" className='header-item'>
                 <ul className='menu-items'>
                     <li className='menu-item'>
