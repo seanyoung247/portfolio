@@ -32,6 +32,7 @@ export const headerStyles = (theme: Theme) => css`
     h1 {
         order: 1;
         font-size: clamp(2em, 8vw, 6em);
+        padding: 0;
     }
 
     #main-menu {

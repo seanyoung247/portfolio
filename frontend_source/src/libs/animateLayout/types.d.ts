@@ -1,4 +1,11 @@
 
+/* Position types */
+type Point = {
+    x: number,
+    y: number,
+}
+
+/* Layout types */
 interface ElementLayout {
     x: number,
     y: number,
@@ -17,6 +24,12 @@ interface LayoutState {
 
 type LayoutCallback = (previous:ElementLayout, current:ElementLayout) => void
 
+type LayoutOffset = {
+    position: Point,
+    scale: Point,
+}
+
+type KeyframeFunction = (offsets: LayoutOffset) => AnimationKeyyFrame
 
 /* Web Animation API types (DefinitelyTyped https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/web-animations-js/index.d.ts) */
 
