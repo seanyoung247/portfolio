@@ -1,6 +1,6 @@
 
 import { useState, useRef, useLayoutEffect } from "react";
-import { LayoutCallback, LayoutState, getLayout, layoutHasChanged } from "./utils";
+import { getLayout, layoutHasChanged } from "./utils";
 
 
 type ElementRef = React.MutableRefObject<HTMLElement> | React.MutableRefObject<null>

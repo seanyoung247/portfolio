@@ -10,7 +10,7 @@ import { classList } from '~/utilities/classlist'
 
 import { headerStyles } from './headerStyles'
 import Logo from '~/assets/logo.svg?react'
-import { AnimateMultiLayout } from '~/libs/animateLayout/AnimateLayout'
+import { AnimateMultiLayout } from '~/libs/AnimateLayout/AnimateLayout'
 
 
 type HeaderProps = {
@@ -53,7 +53,7 @@ export const Header = ({ toggleTheme }: HeaderProps) => {
                                 Contact
                             </a>
                         </li>
-                        <li>
+                        <li className='menu-item'>
                             <ToggleTheme toggle={ toggleTheme } />
                         </li>
                     </AnimateMultiLayout>

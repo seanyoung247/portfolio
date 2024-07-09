@@ -1,21 +1,5 @@
 
-export interface ElementLayout {
-    x: number,
-    y: number,
-    top: number,
-    left: number,
-    right: number,
-    bottom: number,
-    height: number,
-    width: number,
-}
-
-export interface LayoutState {
-    animation: null,
-    layout: ElementLayout | null,
-}
-
-export const getLayout = (el:HTMLElement | null): ElementLayout | null => (
+export const getLayout = (el: HTMLElement | null): ElementLayout | null => (
     el ? {
         x: el.offsetLeft,
         y: el.offsetTop,
@@ -47,5 +31,3 @@ export const layoutHasChanged = (
     current.width === previous.width &&
     current.height === previous.height
 ))
-
-export type LayoutCallback = (previous:ElementLayout, current:ElementLayout) => void
