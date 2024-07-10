@@ -25,7 +25,7 @@ export const AnimateLayout = forwardRef<AnimateRef, AnimateLayoutProps>(
             if (element) {
                 const offsets = calcOffsets(oldLayout, newLayout)
                 const keyframes = (combineKeyframes(
-                    keyframe.scale, keyframe.translate.directTo
+                    keyframe.scale, keyframe.translate.cornerVtoH
                 ))(offsets)
                 previous.current.animation = createAnimation(element, keyframes, 5000)
                 previous.current.animation.play()

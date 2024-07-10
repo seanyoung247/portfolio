@@ -8,9 +8,10 @@ import { useContext } from 'react'
 import { scrollContext } from '~/hooks/useScroll'
 import { classList } from '~/utilities/classlist'
 
+import { AnimateLayout, AnimateMultiLayout } from '~/libs/animatelayout/AnimateLayout'
+
 import { headerStyles } from './headerStyles'
 import Logo from '~/assets/logo.svg?react'
-import { AnimateMultiLayout } from '~/libs/animatelayout/AnimateLayout'
 
 
 type HeaderProps = {
@@ -26,14 +27,16 @@ export const Header = ({ toggleTheme }: HeaderProps) => {
     return (
         <SplashHeader className={classList(expanded&&'expanded')} css={ headerStyles(theme) } height="4em">
             
-            <AnimateMultiLayout>
-                <a href="#top" className='logo header-item'>
-                    <Logo />
-                </a>
-                <h1 className='header-item'>
-                    Sean Young
-                </h1>
-            </AnimateMultiLayout>
+            <a href="#top" className='logo header-item'>
+                <AnimateLayout>
+                    <span style={{width:'100%'}}><Logo /></span>
+                </AnimateLayout>
+            </a>
+            <h1 className='header-item'>
+                <AnimateLayout>
+                    <span>Sean Young</span>
+                </AnimateLayout>
+            </h1>
 
             <nav id="main-menu" className='header-item'>
                 <ul className='menu-items'>

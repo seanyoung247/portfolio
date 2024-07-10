@@ -28,7 +28,13 @@ export const keyframe = {
 
     translate: {
         directTo: ({position}: LayoutOffset): AnimationKeyFrame =>({
-            translate: [`${position.x}px ${position.y}px`, `${position.x}px ${position.y}px`]//'0 0']
+            translate: [`${position.x}px ${position.y}px`, '0 0']
+        }),
+        cornerHtoV: ({position}: LayoutOffset): AnimationKeyFrame =>({
+            translate: [`${position.x}px ${position.y}px`, `0 ${position.y}px`, '0 0']
+        }),
+        cornerVtoH: ({position}: LayoutOffset): AnimationKeyFrame =>({
+            translate: [`${position.x}px ${position.y}px`, `${position.x}px 0`, '0 0']
         }),
     } 
 }

@@ -60,7 +60,7 @@ declare const AnimationPlaybackEvent: {
 };
 
 interface AnimationKeyFrame {
-    [key: string]: string | number | [string | number, string | number] | undefined;
+    [key: string]: string[];
 }
 
 interface AnimationTimeline {
