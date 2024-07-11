@@ -1,29 +1,4 @@
 
-type AnimKeyframes = KeyframeFunction | null
-type AnimOptions = number | AnimationEffectTiming
-
-export class LayoutAnimation {
-    private _keyframes: AnimKeyframes
-    private _options: AnimOptions
-    private _animation: Animation | null
-
-    constructor(keyframes: AnimKeyframes = null, options: AnimOptions = 1000) {
-        this._keyframes = keyframes
-        this._options = options
-        this._animation = null
-    }
-
-    public get keyframes() { return this._keyframes }
-    public set keyframes(keyframes: AnimKeyframes) { this._keyframes = keyframes }
-
-    public get options() { return this._options }
-    public set options(options: AnimOptions) { this._options = options }
-
-    public get animation() { return this._animation }
-
-}
-
-
 export const calcOffsets = (oldLayout: ElementLayout, newLayout: ElementLayout): LayoutOffset => ({
     position: {
         x: (oldLayout.x - newLayout.x) + ((oldLayout.width - newLayout.width) / 2),
@@ -35,11 +10,19 @@ export const calcOffsets = (oldLayout: ElementLayout, newLayout: ElementLayout):
     }
 })
 
-export const keyframeAnimations = {
+export const animations = {
 
-    scale: ({scale}: LayoutOffset): AnimationKeyFrame => ({
-        scale: [ `${scale.x} ${scale.y}`, '1 1' ]
-    }),
+    scale:{
+        both: ({scale}: LayoutOffset): AnimationKeyFrame => ({
+            scale: [ `${scale.x} ${scale.y}`, '1 1' ]
+        }),
+        x: ({scale}: LayoutOffset): AnimationKeyFrame => ({
+            scale: [ `${scale.x} 1`, '1 1' ]
+        }),
+        y: ({scale}: LayoutOffset): AnimationKeyFrame => ({
+            scale: [ `1 ${scale.y}`, '1 1' ]
+        }),
+    },
 
     translate: {
         directTo: ({position}: LayoutOffset): AnimationKeyFrame =>({
@@ -49,7 +32,6 @@ export const keyframeAnimations = {
             translate: [`${position.x}px ${position.y}px`, `0 ${position.y}px`, '0 0']
         }),
         cornerVtoH: ({position}: LayoutOffset): AnimationKeyFrame =>({
-            // translate: [`${position.x}px ${position.y}px`, `${position.x}px 0`, '0 0']
             translate: [`${position.x}px ${position.y}px`, `${position.x}px 0`, '0 0']
         }),
     } 

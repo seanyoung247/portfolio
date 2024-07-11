@@ -29,8 +29,11 @@ type LayoutOffset = {
     scale: Point,
 }
 
+/* Animation generation */
+type offsetFunction = (oldLayout: ElementLayout, newLayout: ElementLayout) => LayoutOffset
 type KeyframeFunction = (offsets: LayoutOffset) => AnimationKeyFrame
 
+/* Animation types */
 interface AnimationKeyFrame {
     [key: string]: string[]
 }
