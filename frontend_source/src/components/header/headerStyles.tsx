@@ -6,7 +6,6 @@ import { Theme } from '~/theme'
 export const headerStyles = (theme: Theme) => css`
 
     /* Splash screen and base styles */
-
     &.expanded {
         justify-content: space-evenly;
         height: 100lvh;
@@ -21,7 +20,6 @@ export const headerStyles = (theme: Theme) => css`
 
     .logo {
         --foreground: ${theme.foreground};
-        /* --flash: ${theme.primaryAccent}; */
         --flash: ${theme.foreground};
 
         order: 2;
@@ -57,34 +55,35 @@ export const headerStyles = (theme: Theme) => css`
     }
 
     /* Menubar styles */
+    :not(.expanded) {
 
-    :not(.expanded) & {
-        justify-content: flex-start; 
-        height: 4em;
-    }
+        & {
+            justify-content: flex-start; 
+            height: 4em;
+        }
 
-    :not(.expanded) .header-item {
-        flex: 0 0 auto;
-    }
+        .header-item {
+            flex: 0 0 auto;
+        }
 
-    :not(.expanded) .logo {
-        order: 0;
-        flex: 0 0 3em;
-    }
+        .logo {
+            order: 0;
+            flex: 0 0 3em;
+        }
 
-    :not(.expanded) h1 {
-        font-size: 1.5em;
-    }
+        h1 {
+            font-size: 1.5em;
+        }
 
-    :not(.expanded) #main-menu {
-        margin-left: auto;
-    }
+        #main-menu {
+            margin-left: auto;
+        }
+        .menu-items {
+            flex-direction: row;
+        }
+        .menu-item {
+            font-size: 1em;
+        }
 
-    :not(.expanded) .menu-items {
-       flex-direction: row;
-    }
-
-    :not(.expanded) .menu-item {
-        font-size: 1em;
-    }
+    } 
 `

@@ -50,7 +50,7 @@ export const SplashHeader = ({className, children, height='4em'}: SplashHeaderPr
                 { children }
 
             </header>
-            <div css={{
+            <div id="header-spacer" css={{
                 height: `calc(100lvh - ${height} + 1px)`,
                 marginBottom: '-1px',
                 background: theme.contentBackground,
