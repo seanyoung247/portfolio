@@ -51,7 +51,26 @@ export const headerStyles = (theme: Theme) => css`
     }
 
     .menu-item > a {
+        position: relative;
         text-decoration: none;
+    }
+
+    .menu-item > a::after {
+        content: '';
+        position: absolute;
+        top: 100%; left: 0;
+        width: 100%; height: 2px;
+    
+        background:
+            linear-gradient(${theme.foreground}, ${theme.foreground}) 
+                no-repeat top center / 0% 100%;
+        transition: background 0.25s;
+    }
+    .menu-item > a:hover::after {
+        content: '';
+        background:
+            linear-gradient(${theme.foreground}, ${theme.foreground}) 
+                no-repeat top center / 100% 100%;
     }
 
     /* Menubar styles */
@@ -85,5 +104,5 @@ export const headerStyles = (theme: Theme) => css`
             font-size: 1em;
         }
 
-    } 
+    }
 `

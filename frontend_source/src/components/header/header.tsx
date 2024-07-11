@@ -24,44 +24,49 @@ export const Header = ({ toggleTheme }: HeaderProps) => {
     const theme = useTheme()
     const scroll = useContext(scrollContext)
 
-    const keyframes = combineKeyframes(
-        animations.scale.both, 
-        // animations.translate.cornerVtoH 
-        (scroll.direction.y > 0) ? animations.translate.cornerVtoH : animations.translate.cornerHtoV 
-    )
     // If scrolling up within the first page or at the very top, expand the splash screen
     const expanded = (scroll.direction.y === -1 && scroll.page.y < 1 || scroll.current.y === 0)
     const pagesPercentage = clamp(0, expanded ? (1 - scroll.page.y) * 100 : (scroll.page.y * 100), 100)
-    
+
+    // Layout animation
+    const keyframes = combineKeyframes(
+        animations.scale.both, 
+        expanded ? animations.translate.cornerHtoV : animations.translate.cornerVtoH
+    )
+    const options = {
+        duration: 100,
+        playbackRate:0
+    }
+
     return (
         <SplashHeader className={classList(expanded&&'expanded')} css={ headerStyles(theme) } height="4em">
             
             <a href="#top" className='logo header-item'>
-                <AnimateLayout keyframes={ keyframes } position={pagesPercentage} options={{duration: 100, playbackRate:0}}>
+                <AnimateLayout keyframes={ keyframes } position={pagesPercentage} options={ options }>
                     <span style={{width:'100%'}}><Logo /></span>
                 </AnimateLayout>
             </a>
             <h1 className='header-item'>
-                <AnimateLayout keyframes={ keyframes } position={pagesPercentage} options={{duration: 100, playbackRate:0}}>
+                <AnimateLayout keyframes={ keyframes } position={pagesPercentage} options={ options }>
                     <span>Sean Young</span>
                 </AnimateLayout>
             </h1>
 
             <nav id="main-menu" className='header-item'>
                 <ul className='menu-items'>
-                    <AnimateLayout keyframes={ keyframes } position={pagesPercentage} options={{duration: 100, playbackRate:0}}>
+                    <AnimateLayout keyframes={ keyframes } position={pagesPercentage} options={ options }>
                         <li className='menu-item'>
-                            <a href="#about">
+                            <a href="#about" className='nav-link'>
                                 About
                             </a>
                         </li>
                         <li className='menu-item'>
-                            <a href="#projects">
+                            <a href="#projects" className='nav-link'>
                                 Projects
                             </a>
                         </li>
                         <li className='menu-item'>
-                            <a href="#contact">
+                            <a href="#contact" className='nav-link'>
                                 Contact
                             </a>
                         </li>
