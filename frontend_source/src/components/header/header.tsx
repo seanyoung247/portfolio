@@ -8,7 +8,7 @@ import { useContext } from 'react'
 import { scrollContext } from '~/hooks/useScroll'
 import { classList } from '~/utilities/classlist'
 
-import { AnimateLayout, AnimateMultiLayout } from '~/libs/animatelayout/AnimateLayout'
+import { AnimateLayout } from '~/libs/animationlayout/AnimateLayout'
 
 import { headerStyles } from './headerStyles'
 import Logo from '~/assets/logo.svg?react'
@@ -40,7 +40,7 @@ export const Header = ({ toggleTheme }: HeaderProps) => {
 
             <nav id="main-menu" className='header-item'>
                 <ul className='menu-items'>
-                    <AnimateMultiLayout>
+                    <AnimateLayout>
                         <li className='menu-item'>
                             <a href="#about">
                                 About
@@ -59,7 +59,7 @@ export const Header = ({ toggleTheme }: HeaderProps) => {
                         <li className='menu-item'>
                             <ToggleTheme toggle={ toggleTheme } />
                         </li>
-                    </AnimateMultiLayout>
+                    </AnimateLayout>
                 </ul>
             </nav>
         </SplashHeader>

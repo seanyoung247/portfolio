@@ -29,9 +29,11 @@ type LayoutOffset = {
     scale: Point,
 }
 
-type KeyframeFunction = (offsets: LayoutOffset) => AnimationKeyyFrame
+type KeyframeFunction = (offsets: LayoutOffset) => AnimationKeyFrame
 
-/* Web Animation API types (DefinitelyTyped https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/web-animations-js/index.d.ts) */
+interface AnimationKeyFrame {
+    [key: string]: string[]
+}
 
 type AnimationEffectTimingFillMode = "none" | "forwards" | "backwards" | "both" | "auto";
 type AnimationEffectTimingPlaybackDirection = "normal" | "reverse" | "alternate" | "alternate-reverse";
@@ -58,10 +60,6 @@ declare const AnimationPlaybackEvent: {
     prototype: AnimationPlaybackEvent;
     new(type: string, eventInitDict?: AnimationPlaybackEventInit): AnimationPlaybackEvent;
 };
-
-interface AnimationKeyFrame {
-    [key: string]: string[];
-}
 
 interface AnimationTimeline {
     readonly currentTime: CSSNumberish | null;
