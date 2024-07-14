@@ -46,11 +46,8 @@ export const headerStyles = (theme: Theme) => css`
         flex-direction: column;
     }
 
-    .menu-item {
-        font-size: 1.5em;
-    }
-
     .menu-item > a {
+        font-size: 1.5em;
         position: relative;
         text-decoration: none;
     }
@@ -100,7 +97,7 @@ export const headerStyles = (theme: Theme) => css`
         .menu-items {
             flex-direction: row;
         }
-        .menu-item {
+        .menu-item > a {
             font-size: 1em;
         }
 

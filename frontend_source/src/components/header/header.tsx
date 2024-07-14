@@ -34,6 +34,7 @@ export const Header = ({ toggleTheme }: HeaderProps) => {
         expanded ? animations.translate.cornerHtoV : animations.translate.cornerVtoH
     )
     const options = {
+        easing: 'linear',
         duration: 100,
         playbackRate:0
     }
