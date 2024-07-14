@@ -4,7 +4,6 @@ import { Theme } from '~/theme'
 
 
 export const headerStyles = (theme: Theme) => css`
-
     /* Splash screen and base styles */
     &.expanded {
         justify-content: space-evenly;

@@ -10,6 +10,7 @@ import { scrollContext, useScrollState } from './hooks/useScroll'
 const pageStyles = (theme: Theme) => css`
     * {
         scrollbar-color: ${theme.foreground} ${theme.contentBackground};
+        transition: background 0.5s, foreground 0.5s, box-shadow 0.5s;
     }
     html, body {
         background-color: ${theme.background};
@@ -22,7 +23,6 @@ const pageStyles = (theme: Theme) => css`
     }
     a, a:visited {
         color: ${theme.foreground};
-        
     }
 `
 
@@ -41,12 +41,12 @@ const App = () => {
                 <Header toggleTheme={ toggleTheme } />
 
                 <main css={{
-                    'section:nth-of-type(odd)': {
-                        backgroundColor: theme.background,
-                    },
-                    'section:nth-of-type(even)': {
-                        backgroundColor: theme.altBackground,
-                    }
+                    // 'section:nth-of-type(odd)': {
+                    //     backgroundColor: theme.background,
+                    // },
+                    // 'section:nth-of-type(even)': {
+                    //     backgroundColor: theme.altBackground,
+                    // }
                 }}>
                     <section id="about" css={{
                         minHeight: '100lvh',
