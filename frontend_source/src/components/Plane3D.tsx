@@ -16,7 +16,7 @@ export const Plane3D = (
         position: absolute;
         width: ${width};
         height: ${height};
-        background: url(${image}) no-repeat center/100%;
+        background: url(${image}) repeat center/100%;
         backface-visibility: hidden;
         transform: 
             translate3d(${position.toCSS(',')})
