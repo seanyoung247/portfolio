@@ -4,22 +4,37 @@ import { css } from "@emotion/react"
 type Viewport3DProps = {
     width: string,
     height: string,
+    maxWidth?: string,
+    maxHeight?: string,
     perspective: string,
     children: React.ReactNode,
 }
 
-export const View3D = ({width, height, perspective, children}: Viewport3DProps) => (
-    <div css={css`
+
+const Styles = (props: Viewport3DProps) => (css`
+    width: ${props.width};
+    height: ${props.height};
+    ${props.maxWidth ? `max-width: ${props.maxWidth};` : ''}
+    ${props.maxHeight ? `max-width: ${props.maxHeight};` : ''}
+    background: black;
+    overflow:hidden;
+
+    .View3D {
         display: flex;
-        width: ${width};
-        height: ${height};
+        width: 100%;
+        height: 100%;
         justify-content: center;
         align-items: center;
-        border: 1px solid red;
-
         transform-style: preserve-3d;
-        perspective: ${perspective};
-    `}>
-        { children }
+        perspective: ${props.perspective};
+    }
+`)
+
+
+export const View3D = (props: Viewport3DProps) => (
+    <div css={Styles(props)}>
+        <div className="View3D">
+            { props.children }
+        </div>
     </div>
 )
