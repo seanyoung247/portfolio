@@ -6,20 +6,18 @@ type Plane3DProps = {
     height: string,
     position: Coordinate3D,
     rotation: Coordinate3D,
-    fade?: number,
     image: string,
+    className?: string,
 }
 
 export const Plane3D = (
-    {width, height, position, rotation, fade=0, image}:Plane3DProps) => (
+    {width, height, position, rotation,  image, className=''}:Plane3DProps) => (
 
-    <div css={css`
+    <div className={className} css={css`
         position: absolute;
         width: ${width};
         height: ${height};
-        background: 
-            ${fade > 0 ? `linear-gradient(90deg, rgba(0,0,0,${fade}) 0%, rgba(0,0,0,${fade}) 100%),` : ''}
-            url(${image}) repeat center / 100%;
+        background: url(${image}) repeat center / 100%;
         backface-visibility: hidden;
         transform: 
             translate3d(${position.toCSS(',')})

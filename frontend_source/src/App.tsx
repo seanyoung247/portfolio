@@ -1,6 +1,7 @@
 import { Coordinate3D } from "./utilities/coords"
 import { Plane3D } from "./components/Plane3D"
 import { View3D } from "./components/View3D"
+import { clamp } from "~/utilities/clamp"
 import { css } from "@emotion/react"
 
 import stone from './assets/stone.png'
@@ -17,7 +18,7 @@ const TileTest = ({offset, fade=0}:{offset:number, fade?:number}) => (
             position={ new Coordinate3D(-300,0,offset) } 
             rotation={ new Coordinate3D(0,90,0) }
             image={stone}
-            fade={fade}
+            css={css`filter:brightness(${clamp(0, 1 - fade, 1)})`}
         />
         {/* Right Wall */}
         <Plane3D 
@@ -26,7 +27,7 @@ const TileTest = ({offset, fade=0}:{offset:number, fade?:number}) => (
             position={ new Coordinate3D(300,0,offset) } 
             rotation={ new Coordinate3D(0,-90,0) }
             image={stone}
-            fade={fade}
+            css={css`filter:brightness(${clamp(0, 1 - fade, 1)})`}
         />
         {/* Floor */}
         <Plane3D 
@@ -35,7 +36,7 @@ const TileTest = ({offset, fade=0}:{offset:number, fade?:number}) => (
             position={ new Coordinate3D(0,300,offset) } 
             rotation={ new Coordinate3D(90,0,-90) }
             image={brick}
-            fade={fade}
+            css={css`filter:brightness(${clamp(0, 1 - fade, 1)})`}
         />
         {/* Ceiling */}
         <Plane3D 
@@ -44,7 +45,7 @@ const TileTest = ({offset, fade=0}:{offset:number, fade?:number}) => (
             position={ new Coordinate3D(0,-300, offset) } 
             rotation={ new Coordinate3D(-90,0,90) }
             image={stone2}
-            fade={fade}
+            css={css`filter:brightness(${clamp(0, 1 - fade, 1)})`}
         />
     </>
 )
@@ -70,18 +71,18 @@ const App = () => {
                 & { bottom: unset; top: 0; }
             }`
         }>
-            <View3D width="100%" height="100lvh" maxWidth="1600px" perspective="600px">
+            <View3D width="min(100%, 1600px)" height="100lvh" perspective="600px">
                 <Plane3D 
                     width="600px" 
                     height="600px" 
                     position={ new Coordinate3D(0,0,-1800 + offset) } 
                     rotation={ new Coordinate3D(0,0,0) }
                     image={stone}
-                    fade={1.0-fader}
+                    css={css`filter:brightness(${clamp(0, fader, 1)})`}
                 />
                 <TileTest offset={-1500 + offset} fade={0.8-fader}/>
                 <TileTest offset={-900 + offset} fade={0.5-fader}/>
-                <TileTest offset={-300 + offset}/>
+                <TileTest offset={-300 + offset} fade={0.2-fader}/>
                 <TileTest offset={300 + offset}/>
             </View3D>
         </div>

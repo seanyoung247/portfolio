@@ -4,8 +4,6 @@ import { css } from "@emotion/react"
 type Viewport3DProps = {
     width: string,
     height: string,
-    maxWidth?: string,
-    maxHeight?: string,
     perspective: string,
     children: React.ReactNode,
 }
@@ -14,8 +12,6 @@ type Viewport3DProps = {
 const Styles = (props: Viewport3DProps) => (css`
     width: ${props.width};
     height: ${props.height};
-    ${props.maxWidth ? `max-width: ${props.maxWidth};` : ''}
-    ${props.maxHeight ? `max-width: ${props.maxHeight};` : ''}
     background: black;
     overflow: hidden;
 
