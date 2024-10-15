@@ -8,7 +8,7 @@ import stone2 from './assets/stone2.png'
 import brick from './assets/brick.png'
 import { useScrollState } from "./hooks/useScroll";
 
-const TileTest = ({offset}:{offset:number}) => (
+const TileTest = ({offset, fade=0}:{offset:number, fade?:number}) => (
     <>
         {/* left wall */}
         <Plane3D 
@@ -17,6 +17,7 @@ const TileTest = ({offset}:{offset:number}) => (
             position={ new Coordinate3D(-300,0,offset) } 
             rotation={ new Coordinate3D(0,90,0) }
             image={stone}
+            fade={fade}
         />
         {/* Right Wall */}
         <Plane3D 
@@ -25,6 +26,7 @@ const TileTest = ({offset}:{offset:number}) => (
             position={ new Coordinate3D(300,0,offset) } 
             rotation={ new Coordinate3D(0,-90,0) }
             image={stone}
+            fade={fade}
         />
         {/* Floor */}
         <Plane3D 
@@ -33,6 +35,7 @@ const TileTest = ({offset}:{offset:number}) => (
             position={ new Coordinate3D(0,300,offset) } 
             rotation={ new Coordinate3D(90,0,-90) }
             image={brick}
+            fade={fade}
         />
         {/* Ceiling */}
         <Plane3D 
@@ -41,6 +44,7 @@ const TileTest = ({offset}:{offset:number}) => (
             position={ new Coordinate3D(0,-300, offset) } 
             rotation={ new Coordinate3D(-90,0,90) }
             image={stone2}
+            fade={fade}
         />
     </>
 )
@@ -49,6 +53,7 @@ const App = () => {
 
     const scroll = useScrollState()
     const offset = scroll.page.y * 1200;
+    const fader = ((scroll.page.y * 2) / 2);
 
     return (<>
         <div 
@@ -72,9 +77,10 @@ const App = () => {
                     position={ new Coordinate3D(0,0,-1800 + offset) } 
                     rotation={ new Coordinate3D(0,0,0) }
                     image={stone}
+                    fade={1.0-fader}
                 />
-                <TileTest offset={-1500 + offset}/>
-                <TileTest offset={-900 + offset}/>
+                <TileTest offset={-1500 + offset} fade={0.8-fader}/>
+                <TileTest offset={-900 + offset} fade={0.5-fader}/>
                 <TileTest offset={-300 + offset}/>
                 <TileTest offset={300 + offset}/>
             </View3D>

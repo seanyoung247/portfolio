@@ -17,7 +17,7 @@ const Styles = (props: Viewport3DProps) => (css`
     ${props.maxWidth ? `max-width: ${props.maxWidth};` : ''}
     ${props.maxHeight ? `max-width: ${props.maxHeight};` : ''}
     background: black;
-    overflow:hidden;
+    overflow: hidden;
 
     .View3D {
         display: flex;
