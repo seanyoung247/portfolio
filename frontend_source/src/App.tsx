@@ -53,8 +53,10 @@ const TileTest = ({offset, fade=0}:{offset:number, fade?:number}) => (
 const App = () => {
 
     const scroll = useScrollState()
-    const offset = scroll.page.y * 1200;
-    const fader = ((scroll.page.y * 2) / 2);
+    const offset = scroll.page.y * 1200
+    const maxDraw = 3
+
+    const calcFade = (distance:number):number => clamp(0, ((distance - offset) / 600) / maxDraw, 1)
 
     return (<>
         <div 
@@ -75,18 +77,19 @@ const App = () => {
                 <Plane3D 
                     width="600px" 
                     height="600px" 
-                    position={ new Coordinate3D(0,0,-1800 + offset) } 
+                    position={ new Coordinate3D(0,0,-2400 + offset) } 
                     rotation={ new Coordinate3D(0,0,0) }
                     image={stone}
-                    css={css`filter:brightness(${clamp(0, fader, 1)})`}
+                    css={css`filter:brightness( ${ 1 - calcFade(2400) } )`}
                 />
-                <TileTest offset={-1500 + offset} fade={0.8-fader}/>
-                <TileTest offset={-900 + offset} fade={0.5-fader}/>
-                <TileTest offset={-300 + offset} fade={0.2-fader}/>
-                <TileTest offset={300 + offset}/>
+                <TileTest offset={-2100 + offset} fade={calcFade(2100)}/>
+                <TileTest offset={-1500 + offset} fade={calcFade(1500)}/>
+                <TileTest offset={-900 + offset} fade={calcFade(900)}/>
+                <TileTest offset={-300 + offset} fade={calcFade(300)}/>
+                <TileTest offset={300 + offset} fade={calcFade(-300)}/>
             </View3D>
         </div>
-        <div css={css`height:250lvh;`}></div>
+        <div css={css`height:300lvh;`}></div>
     </>)
 }
 
