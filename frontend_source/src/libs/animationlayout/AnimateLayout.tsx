@@ -17,6 +17,15 @@ type AnimateRef = HTMLElement
 type ElementRef = React.MutableRefObject<HTMLElement>
 
 
+const updateAnimation = (animation:Animation | null, playRate:number | undefined, position:number | null) => {
+    if (animation) {
+        // If a playback rate has been provided in the options, apply it. (allows pausing for instance)
+        animation.playbackRate = playRate ?? 1
+        // If a position has been provided, jump to it.
+        if (position !== null) animation.currentTime = position
+    }
+}
+
 export const AnimateLayout = forwardRef<AnimateRef, AnimateLayoutProps>(
     ({offsets = calcOffsets, keyframes, position = null, options = {duration:100}, children}, elRef) => {
 
@@ -24,9 +33,7 @@ export const AnimateLayout = forwardRef<AnimateRef, AnimateLayoutProps>(
         const element = ref.current
         const previous = useRef<LayoutState>(getBlankState())
 
-        if (position && previous?.current?.animation) {
-            previous.current.animation.currentTime = position;
-        }
+        updateAnimation(previous.current.animation, options.playbackRate, position)
 
         useLayoutChange(element, previous.current, (oldLayout, newLayout) => {
             if (element) {
@@ -35,10 +42,7 @@ export const AnimateLayout = forwardRef<AnimateRef, AnimateLayoutProps>(
                     keyframes(offsets(oldLayout, newLayout)), 
                     options
                 )
-                // If a playback rate has been set in the options, set it. (allows pausing for instance)
-                previous.current.animation.playbackRate = options?.playbackRate ?? 1
-                // If a position has been provided, jump to it.
-                if (position) previous.current.animation.currentTime = position;
+                updateAnimation(previous.current.animation, options.playbackRate, position)
             }
         })
 
